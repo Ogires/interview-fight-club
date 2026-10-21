@@ -283,7 +283,9 @@ describe("veredicto público /r/{id}", () => {
     const { publico_id } = await entrevistaTerminada(malicioso);
     const html = await (await SELF.fetch(`${BASE}/r/${publico_id}`)).text();
     expect(html).not.toContain('"><script>'); // la comilla no cierra el atributo
-    expect(await contarElementos(html, "script")).toBe(0); // ningún <script> real en el DOM
+    // ningún <script> real en el DOM salvo el propio de la página (r.html carga /veredicto.js)
+    expect(await contarElementos(html, "script")).toBe(1);
+    expect(await contarElementos(html, 'script:not([src="/veredicto.js"])')).toBe(0);
     // queda como texto del atributo, con la comilla escapada (getAttribute da el valor crudo)
     expect(await atributo(html, 'meta[property="og:description"]', "content")).toContain("&quot;><script>alert(1)</script>");
   });
