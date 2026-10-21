@@ -1,0 +1,72 @@
+[
+  {
+    "id": "frontend-junior-001",
+    "stack": "frontend",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre var, let y const?",
+    "rubrica": [
+      { "concepto": "ámbito de bloque", "sinonimos": ["bloque", "block scope", "scope de bloque"] },
+      { "concepto": "hoisting", "sinonimos": ["hoisting", "elevación", "zona muerta temporal", "tdz"] },
+      { "concepto": "reasignación", "sinonimos": ["reasignar", "reasignación", "constante"] }
+    ],
+    "esperado": "let y const tienen ámbito de bloque; var, de función. var se eleva inicializada a undefined; let/const quedan en la zona muerta temporal. const impide reasignar la variable, no mutar el objeto."
+  },
+  {
+    "id": "frontend-junior-002",
+    "stack": "frontend",
+    "nivel": "junior",
+    "texto": "¿Qué es el DOM?",
+    "rubrica": [
+      { "concepto": "árbol", "sinonimos": ["árbol", "tree", "nodos", "jerarquía"] },
+      { "concepto": "representación del documento", "sinonimos": ["documento", "html", "representación", "modelo de objetos"] },
+      { "concepto": "manipulable desde JavaScript", "sinonimos": ["javascript", "js", "api", "modificar", "manipular"] }
+    ],
+    "esperado": "El Document Object Model es la representación en memoria del HTML como un árbol de nodos, que el navegador expone como API para leer y modificar la página desde JavaScript."
+  },
+  {
+    "id": "frontend-junior-003",
+    "stack": "frontend",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre == y === en JavaScript?",
+    "rubrica": [
+      { "concepto": "coerción de tipos", "sinonimos": ["coerción", "conversión", "convierte", "coercion"] },
+      { "concepto": "igualdad estricta", "sinonimos": ["estricta", "strict", "mismo tipo", "tipo y valor"] }
+    ],
+    "esperado": "== compara tras convertir los operandos a un tipo común (coerción), con resultados sorprendentes; === exige mismo tipo y mismo valor, sin conversiones."
+  },
+  {
+    "id": "frontend-junior-004",
+    "stack": "frontend",
+    "nivel": "junior",
+    "texto": "¿Qué es un evento en el navegador y cómo se propaga?",
+    "rubrica": [
+      { "concepto": "listener", "sinonimos": ["listener", "addeventlistener", "manejador", "handler", "escuchar"] },
+      { "concepto": "burbujeo", "sinonimos": ["burbujeo", "bubbling", "burbuja", "sube"] },
+      { "concepto": "captura", "sinonimos": ["captura", "capturing", "capture"] }
+    ],
+    "esperado": "Un evento es una señal (clic, tecla...) que se escucha con addEventListener. Se propaga en fase de captura desde la raíz hasta el objetivo y luego en burbujeo de vuelta hacia arriba; stopPropagation la corta."
+  },
+  {
+    "id": "frontend-junior-005",
+    "stack": "frontend",
+    "nivel": "junior",
+    "texto": "¿Cuándo usarías flexbox y cuándo grid?",
+    "rubrica": [
+      { "concepto": "una dimensión", "sinonimos": ["una dimensión", "unidimensional", "fila o columna", "un eje"] },
+      { "concepto": "dos dimensiones", "sinonimos": ["dos dimensiones", "bidimensional", "filas y columnas", "rejilla"] }
+    ],
+    "esperado": "Flexbox distribuye elementos en una dimensión (una fila o una columna) y brilla en componentes; grid maqueta en dos dimensiones (filas y columnas a la vez), ideal para el layout de página."
+  },
+  {
+    "id": "bbdd-mid-001",
+    "stack": "bbdd",
+    "nivel": "mid",
+    "texto": "¿Qué es un índice y cuándo no conviene crearlo?",
+    "rubrica": [
+      { "concepto": "acelera las lecturas", "sinonimos": ["búsqueda", "lectura", "rápido", "acelera", "b-tree"] },
+      { "concepto": "penaliza las escrituras", "sinonimos": ["escritura", "insert", "update", "penaliza", "coste"] },
+      { "concepto": "baja selectividad", "sinonimos": ["selectividad", "cardinalidad", "pocos valores", "tabla pequeña"] }
+    ],
+    "esperado": "Un índice (típicamente un B-tree) acelera búsquedas y ordenaciones a cambio de espacio y de encarecer cada INSERT/UPDATE/DELETE. No compensa en tablas pequeñas, columnas de baja selectividad o tablas con muchas más escrituras que lecturas."
+  }
+]

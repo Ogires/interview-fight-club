@@ -1,0 +1,27 @@
+{
+  "name": "interview-fight-club",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "assets": { "directory": "./public", "binding": "ASSETS" },
+  "routes": [{ "pattern": "fightclub.webninja.fyi", "custom_domain": true }],
+  "workers_dev": true,
+  "observability": { "enabled": true },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "interview-fight-club",
+      "database_id": "71fe4cb9-1110-41c0-be4d-c3615607a613",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "kv_namespaces": [{ "binding": "KV", "id": "0ce67492b8fe49b1961e598371cb4d22" }],
+  // Plan Free: solo Durable Objects con SQLite (new_sqlite_classes)
+  "durable_objects": { "bindings": [{ "name": "CONTADOR", "class_name": "Contador" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Contador"] }],
+  "vars": {
+    "GROQ_MODEL": "openai/gpt-oss-120b",
+    "GROQ_MODEL_RESERVA_1": "openai/gpt-oss-20b",
+    "GROQ_MODEL_RESERVA_2": "qwen/qwen3.8-27b",
+    "CUOTA_TOKENS_DIA": "200000"
+  }
+}
