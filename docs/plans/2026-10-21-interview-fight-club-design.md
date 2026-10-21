@@ -305,7 +305,7 @@ CREATE TABLE veredictos (
 
 ## 11. Pendiente antes de implementar
 
-- [ ] Sergio: confirmar el subdominio `fightclub.webninja.fyi` (no hace falta cuenta nueva: basta la key de Groq).
+- [x] Subdominio `fightclub.webninja.fyi` confirmado por Sergio (2026-10-21). Se crea solo en el primer deploy (custom_domain).
 - [ ] Tarea 0 del plan: probar los 3 modelos de Groq con el prompt real (marca de nota, tono, español) y el formato de `x_groq.usage`; ajustar §3.2.
 - [ ] Redactar los 4 villanos (prompts + frases de reserva) y el banco de 120 preguntas (con propuestas IA + revisión).
 - [ ] Recomendación de calendario: implementar después del lanzamiento de Frikile en LinkedIn.
