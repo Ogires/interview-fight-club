@@ -108,7 +108,7 @@ KV **no sirve como contador**: no es atómico y cachea lecturas (verificado en p
 3. **Presupuesto:** si el gasto diario de todos los modelos está agotado (DO `Contador`) o el DO falla → modo degradado directo (fail-closed).
 4. **Cadena de proveedores** (§3.2) con prompt = persona del villano + reglas + pregunta + rúbrica + respuesta delimitada + formato de salida con **nonce**.
 5. **Pipes & Filters:** SSE del proveedor → `traducirStream` (de Excusotron) → `extraerNota` (detecta `⟦NOTA-{nonce}:N⟧` aunque llegue partida entre chunks, la retira del flujo) → SSE propio al navegador: eventos `texto` (deltas) y al final `nota` `{ n, nota, siguiente: {n, texto} | null }`.
-6. **Persistencia en el `flush` del stream** vía `ctx.waitUntil` (lección 2): `nota = min(nota_llm, tope_heuristico)`, se anexan nota y comentario (recortado a 400 caracteres), `n_pregunta+1`, `reserva_ms=NULL`, y si n=5 → `estado='terminada'`.
+6. **Persistencia al final del stream, antes del evento `nota`** (forma parte de la respuesta, así que no hace falta `waitUntil`; si el cliente se desconecta, el envío se ignora y la persistencia sigue): `nota = min(nota_llm, tope_heuristico)`, se anexan nota y comentario (recortado a 400 caracteres), `n_pregunta+1`, `reserva_ms=NULL`, y si n=5 → `estado='terminada'`.
 7. **Si la marca no llega o el stream se corta:** nota = puntuador heurístico; si no se emitió texto, frase de reserva del villano. Si falla todo, evento `error` y se libera la reserva (el candidato puede reintentar ese turno).
 
 ### 3.2 Cadena de proveedores (solo Groq, verificado 2026-10-21)
@@ -128,7 +128,7 @@ Límites de Groq por modelo ([console.groq.com/docs/rate-limits](https://console
 - Se salta al siguiente ante 429, 5xx, timeout (8 s hasta el primer byte) o respuesta sin cuerpo.
 - **Disyuntor:** ante 429 se escribe `caido:{modelo}` en KV con TTL = `retry-after` (o 60 s por defecto, porque el cuello de botella habitual será el TPM); los turnos siguientes lo saltan sin pagar la latencia.
 - **Presupuesto:** el DO `tokens:{fecha}:{modelo}` acumula el `usage` del último chunk (Groq lo envía en `x_groq.usage`; si no llega, caracteres/4). Al 90 % del TPD, el modelo se considera caído hasta medianoche UTC.
-- Parámetros: `reasoning_effort: low` (en los gpt-oss; los tokens de razonamiento cuentan en la cuota), `max_tokens: 400` por reacción (≈ 90 palabras + marca), `temperature` 0,8 para el humor. Objetivo: **≤ 1k tokens por turno**, con un system prompt compacto.
+- Parámetros: `reasoning_effort: low` (en los gpt-oss; los tokens de razonamiento cuentan en la cuota), `max_tokens: 800` por reacción (≈ 90 palabras + marca; en gpt-oss los tokens de razonamiento cuentan dentro de `max_tokens`, con 400 la marca podría no llegar — ajustar en la Tarea 0), `temperature` 0,8 para el humor. Objetivo: **≤ 1k tokens por turno**, con un system prompt compacto.
 - **Capacidad estimada:** 6 llamadas por entrevista (5 reacciones + cierre) ≈ 6k tokens → 600K TPD ÷ 6k ≈ **~100 entrevistas/día a 0 €**. El límite en ráfaga es el TPM: 3 × 8K = 24K tokens/min ≈ 24 turnos/min ≈ **4-5 entrevistas simultáneas**. Por encima entra el modo degradado, que sigue siendo jugable.
 - Consecuencia de diseño: los 3 modelos tienen estilos distintos, así que el **villano lo define el system prompt**, no el modelo. Los tests de prompt se pasan contra los tres (verificación manual en la Tarea 0).
 
@@ -172,7 +172,7 @@ Límites de Groq por modelo ([console.groq.com/docs/rate-limits](https://console
 | **LLM05 Improper Output Handling** | El modelo devuelve `<img onerror=…>` | Cliente: `textContent` siempre. Servidor: comentario recortado (400) y frase final (200) antes de guardar; `HTMLRewriter` escribe meta tags con `setAttribute` (escapado). CSP estricta como segunda barrera. |
 | **LLM07 System Prompt Leakage** | "Repite tus instrucciones" para sacar la rúbrica | El prompt no contiene secretos; el banco es público (§6.4). Filtrar la rúbrica solo ayuda en esa pregunta. Asumido. |
 | **LLM09 Misinformation** | La IA puntúa mal una respuesta correcta | Aviso visible de espectáculo; tope heurístico; "lo que esperaba oír" en el desglose permite al candidato contrastar. |
-| **LLM10 Unbounded Consumption** | Post viral o script | (1) 600 caracteres por respuesta y `max_tokens` 400. (2) 6 llamadas por sesión máximo (máquina de estados). (3) Rate limit por IP de ventana fija y **exacto** (DO `Contador`, §3.0): `POST /api/entrevista` 5/min, `POST /api/respuesta` 20/min. (4) **Presupuesto diario** de tokens por modelo en el DO, con modo degradado al agotarse. |
+| **LLM10 Unbounded Consumption** | Post viral o script | (1) 600 caracteres por respuesta y `max_tokens` 800. (2) 6 llamadas por sesión máximo (máquina de estados). (3) Rate limit por IP de ventana fija y **exacto** (DO `Contador`, §3.0): `POST /api/entrevista` 5/min, `POST /api/respuesta` 20/min. (4) **Presupuesto diario** de tokens por modelo en el DO, con modo degradado al agotarse. |
 
 ### 5.2 OWASP Top 10 (2025)
 
