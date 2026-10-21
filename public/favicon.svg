@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Interview Fight Club</title>
+  <rect width="64" height="64" rx="12" fill="#0f0a08"/>
+  <rect x="5" y="5" width="6" height="54" rx="3" fill="#e8b33a"/>
+  <rect x="53" y="5" width="6" height="54" rx="3" fill="#e8b33a"/>
+  <rect x="8" y="14" width="48" height="6" rx="3" fill="#c8202f"/>
+  <rect x="8" y="29" width="48" height="6" rx="3" fill="#f1e6cf"/>
+  <rect x="8" y="44" width="48" height="6" rx="3" fill="#c8202f"/>
+  <circle cx="32" cy="32" r="12" fill="#e8b33a" stroke="#0f0a08" stroke-width="3"/>
+  <path d="M27 26h10M32 26v12M27 38h10" stroke="#0f0a08" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+</svg>

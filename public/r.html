@@ -2,20 +2,78 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Interview Fight Club — Veredicto</title>
   <meta name="description" content="Simulador de entrevista técnica con villanos IA. Esto es un espectáculo, no un proceso de selección.">
+  <meta name="theme-color" content="#0f0a08">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Interview Fight Club — Veredicto">
   <meta property="og:description" content="Simulador de entrevista técnica con villanos IA. Esto es un espectáculo, no un proceso de selección.">
   <meta property="og:image" content="https://fightclub.webninja.fyi/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="627">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/veredicto.js" type="module"></script>
 </head>
-<body>
-  <main id="veredicto">
-    <h1>Interview Fight Club</h1>
-    <p>Este veredicto no consta en RRHH.</p>
+<body class="pagina-veredicto">
+  <a class="saltar" href="#principal">Saltar al contenido</a>
+  <div class="cuerdas" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <header class="cartel cartel--mini">
+    <p class="cartel__antetitulo">Parte oficial del combate</p>
+    <p class="cartel__titulo"><a href="/"><span>Interview</span> <span class="cartel__fight">Fight</span> <span>Club</span></a></p>
+  </header>
+
+  <main id="principal" tabindex="-1">
+    <p id="cargando" class="cargando" role="status">Buscando el expediente en RRHH…</p>
+
+    <article id="veredicto" class="veredicto" aria-labelledby="v-titulo" hidden>
+      <header class="veredicto__cabeza">
+        <span class="veredicto__emoji" id="v-emoji" aria-hidden="true"></span>
+        <div>
+          <p class="veredicto__juez"><span id="v-villano"></span> dictamina sobre</p>
+          <h1 class="veredicto__alias" id="v-titulo"></h1>
+          <p class="veredicto__ficha" id="v-ficha"></p>
+        </div>
+      </header>
+
+      <div class="veredicto__marcador">
+        <p class="veredicto__media" id="v-media-bloque"><span class="veredicto__cifra" id="v-media"></span><span class="veredicto__de">/10</span></p>
+        <p class="cinturon" id="v-rango"></p>
+      </div>
+
+      <blockquote class="veredicto__frase">
+        <p id="v-frase"></p>
+        <footer id="v-firma"></footer>
+      </blockquote>
+
+      <section aria-labelledby="v-desglose-titulo">
+        <h2 id="v-desglose-titulo" class="titulo-seccion">Asalto a asalto</h2>
+        <ol class="desglose" id="v-desglose"></ol>
+      </section>
+
+      <div class="acciones">
+        <button id="btn-copiar" class="boton" type="button">Copiar enlace</button>
+        <a class="boton boton--gong" href="/">¿Te atreves?</a>
+      </div>
+      <p id="estado-copia" class="ayuda" role="status"></p>
+      <p class="aviso aviso--pie"><span aria-hidden="true">⚠</span> Esto es un espectáculo, no un proceso de selección. Notas puestas por una IA con un tope automático por rúbrica.</p>
+      <p class="veredicto__fecha" id="v-fecha"></p>
+    </article>
+
+    <section id="no-consta" class="no-consta" hidden>
+      <h1 class="titulo-seccion">Este veredicto no consta en RRHH</h1>
+      <p>O el enlace está mal copiado o el expediente se ha traspapelado entre dos dinámicas de grupo.</p>
+      <a class="boton boton--gong" href="/">Pide tu propia entrevista</a>
+    </section>
   </main>
+
+  <footer class="pie">
+    <p>Interview Fight Club: el veredicto es inmutable y no incluye las respuestas del candidato. Una miniapp de la <a href="https://github.com/Ogires">factoría de Ogires</a>.</p>
+  </footer>
+  <noscript><p class="error">Activa JavaScript para ver el veredicto.</p></noscript>
 </body>
 </html>

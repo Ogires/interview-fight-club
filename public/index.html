@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Interview Fight Club — entrevista técnica contra villanos IA</title>
+  <meta name="description" content="5 preguntas técnicas, un entrevistador villano con IA y un veredicto para compartir. Esto es un espectáculo, no un proceso de selección.">
+  <meta name="theme-color" content="#0f0a08">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Interview Fight Club — ¿aguantas 5 asaltos?">
+  <meta property="og:description" content="Entrevista técnica contra un villano IA: el Senior Amargado, la CTO de Startup, el Arquitecto Enterprise o el Reclutador de LinkedIn.">
+  <meta property="og:image" content="https://fightclub.webninja.fyi/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="627">
+  <meta property="og:url" content="https://fightclub.webninja.fyi/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <a class="saltar" href="#principal">Saltar al contenido</a>
+  <div class="cuerdas" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <header class="cartel">
+    <p class="cartel__antetitulo">Esta noche · Sala clandestina · Entrada libre</p>
+    <h1 class="cartel__titulo"><a href="/"><span>Interview</span> <span class="cartel__fight">Fight</span> <span>Club</span></a></h1>
+    <p class="cartel__regla">La primera regla del Interview Fight Club: <strong>no se habla de tu salario actual.</strong></p>
+  </header>
+
+  <main id="principal" tabindex="-1">
+    <!-- Pantalla 1: la elección -->
+    <section id="pantalla-eleccion" class="pantalla" aria-labelledby="titulo-eleccion">
+      <h2 id="titulo-eleccion" class="titulo-seccion">Firma tu combate</h2>
+      <p class="aviso"><span aria-hidden="true">⚠</span> Esto es un espectáculo, no un proceso de selección.</p>
+
+      <form id="form-eleccion" class="eleccion" novalidate>
+        <fieldset class="grupo">
+          <legend><span class="grupo__num">1</span> Tu categoría de peso (stack)</legend>
+          <div class="tarjetas tarjetas--stack" id="opciones-stack"></div>
+        </fieldset>
+
+        <fieldset class="grupo">
+          <legend><span class="grupo__num">2</span> Tu nivel</legend>
+          <div class="tarjetas tarjetas--nivel" id="opciones-nivel"></div>
+        </fieldset>
+
+        <fieldset class="grupo">
+          <legend><span class="grupo__num">3</span> Tu rival</legend>
+          <div class="tarjetas tarjetas--villano" id="opciones-villano"></div>
+        </fieldset>
+
+        <div class="grupo grupo--alias">
+          <label for="alias"><span class="grupo__num">4</span> Nombre de guerra <span class="opcional">(opcional)</span></label>
+          <input id="alias" name="alias" type="text" maxlength="16" autocomplete="nickname" spellcheck="false" placeholder="Candidato-XXXX" aria-describedby="alias-ayuda">
+          <p id="alias-ayuda" class="ayuda">De 3 a 16 letras, números, guion o guion bajo. Saldrá en tu veredicto público.</p>
+        </div>
+
+        <p id="error-eleccion" class="error" role="alert" hidden></p>
+        <button id="btn-entrar" class="boton boton--gong" type="submit" disabled>Entrar al ring</button>
+      </form>
+    </section>
+
+    <!-- Pantalla 2: la entrevista -->
+    <section id="pantalla-ring" class="pantalla" aria-labelledby="titulo-ring" hidden>
+      <div class="esquinas">
+        <div class="esquina esquina--villano" id="esquina-villano">
+          <span class="esquina__emoji" id="ring-emoji" aria-hidden="true"></span>
+          <span class="esquina__rol">Esquina roja</span>
+          <span class="esquina__nombre" id="ring-villano"></span>
+        </div>
+        <div class="vs" aria-hidden="true">VS</div>
+        <div class="esquina esquina--candidato">
+          <span class="esquina__emoji" aria-hidden="true">🥊</span>
+          <span class="esquina__rol">Esquina azul</span>
+          <span class="esquina__nombre" id="ring-alias"></span>
+        </div>
+      </div>
+      <h2 id="titulo-ring" class="sr-only">Entrevista en curso</h2>
+      <div class="marcador">
+        <p class="marcador__asalto" id="ring-asalto">Asalto 1/5</p>
+        <ol class="marcador__campanas" id="ring-campanas" aria-hidden="true"></ol>
+        <p class="marcador__ficha" id="ring-ficha"></p>
+      </div>
+
+      <div class="chat" id="chat" aria-label="Conversación con el entrevistador"></div>
+
+      <form id="form-respuesta" class="respuesta" novalidate>
+        <label for="texto-respuesta" class="respuesta__label">Tu respuesta</label>
+        <textarea id="texto-respuesta" name="respuesta" rows="4" maxlength="600" required aria-describedby="contador"></textarea>
+        <div class="respuesta__pie">
+          <span id="contador" class="contador" aria-live="polite">0/600</span>
+          <button id="btn-responder" class="boton" type="submit">Responder</button>
+        </div>
+        <p id="error-respuesta" class="error" role="alert" hidden></p>
+      </form>
+
+      <div id="final" class="final" hidden>
+        <p class="final__texto">Fin del combate. El jurado de RRHH delibera…</p>
+        <button id="btn-veredicto" class="boton boton--gong" type="button">Ver mi veredicto</button>
+        <p id="error-final" class="error" role="alert" hidden></p>
+      </div>
+
+      <p class="otra"><button id="btn-otra" class="enlace" type="button">Abandonar y empezar otra entrevista</button></p>
+    </section>
+
+    <p id="cargando" class="cargando" role="status">Calentando en el vestuario…</p>
+  </main>
+
+  <footer class="pie">
+    <p>Las respuestas no se guardan: solo la nota y el comentario del villano. Una miniapp de la <a href="https://github.com/Ogires">factoría de Ogires</a>.</p>
+  </footer>
+  <noscript><p class="error">Sin JavaScript no hay combate.</p></noscript>
+</body>
+</html>

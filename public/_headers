@@ -1,0 +1,10 @@
+# Mismas cabeceras que src/http/cabeceras.ts (los estáticos no pasan por el Worker). CSP copiada de la constante CSP.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  X-Frame-Options: DENY
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
