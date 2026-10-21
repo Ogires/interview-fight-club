@@ -1,5 +1,5 @@
 # Diseño: Interview Fight Club
-**Fecha:** 2026-10-21 · **Estado:** aprobado (decisiones validadas: entrevista técnica conceptual · stack + nivel elegibles · galería de villanos · veredicto compartible sin ranking · sesión autoritativa en D1 · cadena de proveedores Cerebras → Groq · arquitectura/patrones/OWASP de §3-§5)
+**Fecha:** 2026-10-21 · **Estado:** aprobado (decisiones validadas: entrevista técnica conceptual · stack + nivel elegibles · galería de villanos · veredicto compartible sin ranking · sesión autoritativa en D1 · cadena de 3 modelos de Groq (Cerebras descartado el 2026-10-21: ya no es gratis) · arquitectura/patrones/OWASP de §3-§5)
 **Contexto:** Cuarta app de "la factoría": la primera con **conversación multi-turno con estado** y **puntuación por IA**. Plantillas: el [diseño de Frikile](https://github.com/Ogires/frikile/blob/main/docs/plans/2026-10-20-frikile-design.md) (D1, bloqueo optimista, rate limit de ventana fija) y el [Worker de Excusotron](https://github.com/Ogires/excusotron/blob/main/src/index.ts) (streaming SSE, `traducirStream`).
 
 > *La primera regla del Interview Fight Club: no se habla de tu salario actual.*
@@ -80,12 +80,12 @@ Un único Cloudflare Worker con `assets` (patrón de la factoría) en `fightclub
 ├────────────────┬───────────────────┬──────────────────────┤
 │ ia/            │ repos/            │ presupuesto/         │
 │ LlmProvider    │ D1: preguntas,    │ KV: tokens diarios   │
-│ cerebras.ts    │ sesiones,         │ por proveedor ·      │
+│ openai-compat  │ sesiones,         │ por proveedor ·      │
 │ groq.ts        │ veredictos        │ disyuntor por        │
 │ cadena.ts      │                   │ proveedor · rate lim │
 └────────────────┴───────────────────┴──────────────────────┘
           │                  │                    │
-       Cerebras / Groq      D1                   KV
+           Groq            D1                   KV
 ```
 
 ### 3.1 Flujo de una respuesta (el camino crítico)
@@ -99,23 +99,28 @@ Un único Cloudflare Worker con `assets` (patrón de la factoría) en `fightclub
 6. **Persistencia en el `flush` del stream** vía `ctx.waitUntil` (lección 2): `nota = min(nota_llm, tope_heuristico)`, se anexan nota y comentario (recortado a 400 caracteres), `n_pregunta+1`, `reserva_ms=NULL`, y si n=5 → `estado='terminada'`.
 7. **Si la marca no llega o el stream se corta:** nota = puntuador heurístico; si no se emitió texto, frase de reserva del villano. Si falla todo, evento `error` y se libera la reserva (el candidato puede reintentar ese turno).
 
-### 3.2 Cadena de proveedores
+### 3.2 Cadena de proveedores (solo Groq, verificado 2026-10-21)
 
-| Orden | Proveedor | Modelo (en `vars`, lección 3) | Por qué |
-|---|---|---|---|
-| 1 | **Cerebras** | `CEREBRAS_MODEL` | ~1M tokens/día gratis: el grueso del tráfico |
-| 2 | **Groq** | `GROQ_MODEL` = `openai/gpt-oss-120b` | Reserva de calidad (~200k tokens/día por modelo) |
-| 3 | **Groq** | `GROQ_MODEL_RESERVA` = `openai/gpt-oss-20b` | Cuota independiente (los límites de Groq son por modelo) |
-| 4 | — | Puntuador heurístico + frases precocinadas | La demo nunca en blanco |
+> **Cerebras descartado (2026-10-21):** ya no tiene free tier permanente. Solo da $5 de crédito único, **exige tarjeta**, caduca a los 30 días y después se corta el acceso si no pagas. Además el trial tiene solo 5 RPM. Rompe la regla de 0 € de la factoría. Fuentes: [cerebras.ai/pricing](https://www.cerebras.ai/pricing), [rate limits](https://inference-docs.cerebras.ai/support/rate-limits).
 
-- Todos OpenAI-compatibles: un único adaptador `openaiCompatible(baseUrl, key, model)` + configuración por proveedor (Strategy).
+Límites de Groq por modelo ([console.groq.com/docs/rate-limits](https://console.groq.com/docs/rate-limits), 2026-10-21), **independientes entre modelos**:
+
+| Orden | Modelo (en `vars`, lección 3) | RPM | RPD | TPM | TPD |
+|---|---|---|---|---|---|
+| 1 | `GROQ_MODEL` = `openai/gpt-oss-120b` | 30 | 1K | 8K | 200K |
+| 2 | `GROQ_MODEL_RESERVA_1` = `openai/gpt-oss-20b` | 30 | 1K | 8K | 200K |
+| 3 | `GROQ_MODEL_RESERVA_2` = `qwen/qwen3.8-27b` | 30 | 1K | 8K | 200K |
+| 4 | Puntuador heurístico + frases precocinadas | — | — | — | — |
+
+- Todos usan la misma API OpenAI-compatible: un único adaptador `openaiCompatible(baseUrl, key, model)` y una entrada de configuración por modelo (Strategy). Añadir otro proveedor gratuito en el futuro (p. ej. Mistral "Experiment", pendiente de verificar) es solo configuración.
 - Se salta al siguiente ante 429, 5xx, timeout (8 s hasta el primer byte) o respuesta sin cuerpo.
-- **Disyuntor:** ante 429 se escribe `caido:{proveedor}` en KV con TTL = `retry-after` (o 300 s por defecto); los turnos siguientes lo saltan sin pagar la latencia.
-- **Presupuesto:** `tokens:{fecha}:{proveedor}` acumula el `usage` del último chunk (o caracteres/4 si no llega). Umbral al 90 % de la cuota diaria de cada proveedor → se considera caído hasta medianoche UTC.
-- Parámetros: `reasoning_effort: low` (si el modelo lo admite), `max_tokens: 400` por reacción (≈ 120 palabras + marca), `temperature` 0,8 para el humor.
-- **Coste estimado:** ~1k tokens por turno, 6 llamadas por entrevista (5 reacciones + cierre) ≈ 6k tokens → ~165 entrevistas/día con Cerebras + ~30 con cada modelo de Groq ≈ **200+ entrevistas/día a 0 €**.
+- **Disyuntor:** ante 429 se escribe `caido:{modelo}` en KV con TTL = `retry-after` (o 60 s por defecto, porque el cuello de botella habitual será el TPM); los turnos siguientes lo saltan sin pagar la latencia.
+- **Presupuesto:** `tokens:{fecha}:{modelo}` acumula el `usage` del último chunk (Groq lo envía en `x_groq.usage`; si no llega, caracteres/4). Al 90 % del TPD, el modelo se considera caído hasta medianoche UTC.
+- Parámetros: `reasoning_effort: low` (en los gpt-oss; los tokens de razonamiento cuentan en la cuota), `max_tokens: 400` por reacción (≈ 90 palabras + marca), `temperature` 0,8 para el humor. Objetivo: **≤ 1k tokens por turno**, con un system prompt compacto.
+- **Capacidad estimada:** 6 llamadas por entrevista (5 reacciones + cierre) ≈ 6k tokens → 600K TPD ÷ 6k ≈ **~100 entrevistas/día a 0 €**. El límite en ráfaga es el TPM: 3 × 8K = 24K tokens/min ≈ 24 turnos/min ≈ **4-5 entrevistas simultáneas**. Por encima entra el modo degradado, que sigue siendo jugable.
+- Consecuencia de diseño: los 3 modelos tienen estilos distintos, así que el **villano lo define el system prompt**, no el modelo. Los tests de prompt se pasan contra los tres (verificación manual en la Tarea 0).
 
-> ⚠️ Verificar en la Tarea 0 del plan: modelos disponibles en el free tier de Cerebras, su RPM y el formato de `usage` en streaming de cada proveedor (Groq lo envía en `x_groq.usage`).
+> ⚠️ Verificar en la Tarea 0 del plan: que `qwen/qwen3.8-27b` respeta la marca `⟦NOTA-…⟧` y el tono en español, y el formato exacto de `x_groq.usage` en streaming.
 
 ### 3.3 Puntuación híbrida
 
@@ -133,8 +138,8 @@ Un único Cloudflare Worker con `assets` (patrón de la factoría) en `fightclub
 | Patrón | Dónde | Problema que resuelve |
 |---|---|---|
 | **Hexagonal ligera (ports & adapters)** | `dominio/` vs `ia/`, `repos/`, `presupuesto/` | Dominio puro testeable sin mocks; proveedores intercambiables |
-| **Strategy** | `LlmProvider` + adaptador OpenAI-compatible configurado por proveedor | Cerebras y Groq difieren en URL, key, modelo y errores; en tests se inyecta uno falso |
-| **Chain of Responsibility (failover)** | `ia/cadena.ts` | Cerebras → Groq 120b → Groq 20b → heurística |
+| **Strategy** | `LlmProvider` + adaptador OpenAI-compatible configurado por proveedor | Los modelos difieren en id, límites y estilo; mañana puede entrar otro proveedor OpenAI-compatible; en tests se inyecta uno falso |
+| **Chain of Responsibility (failover)** | `ia/cadena.ts` | gpt-oss-120b → gpt-oss-20b → qwen3.8-27b → heurística |
 | **Circuit Breaker** (ligero, en KV) | `caido:{proveedor}` con TTL | No pagar la latencia de un proveedor sin cuota en cada turno |
 | **Máquina de estados** | `dominio/sesion.ts` | Transiciones válidas centralizadas: no se responde la 3 sin la 2, ni en sesión terminada |
 | **Bloqueo optimista** (de Frikile) | Reserva del turno en `sesiones` | Un doble clic o un reintento no gasta tokens dos veces |
@@ -277,7 +282,7 @@ CREATE TABLE veredictos (
 ## 8. Estrategia de tests (TDD)
 
 - **Unitarios puros (dominio):** máquina de estados (orden, turno repetido, sesión terminada) · `extraerNota` (marca entera, **partida entre chunks**, nonce incorrecto ignorado, marca falsa del usuario ignorada, ausencia de marca) · `saneado` (delimitadores, `NOTA-`, control chars, longitud) · tope heurístico (corta, sin conceptos, sinónimos, tildes) · puntuador de reserva · rangos (fronteras 3/5/7/9) · construcción de prompt (nonce presente, respuesta delimitada).
-- **Cadena de proveedores** con `globalThis.fetch` parcheado con fábrica de Response (lección 1): Cerebras OK · Cerebras 429 → Groq · todos caídos → degradado · disyuntor evita la llamada · presupuesto agotado → degradado sin fetch.
+- **Cadena de proveedores** con `globalThis.fetch` parcheado con fábrica de Response (lección 1): modelo 1 OK · modelo 1 429 → modelo 2 · todos caídos → degradado · disyuntor evita la llamada · presupuesto agotado → degradado sin fetch.
 - **Integración con D1 + KV reales** (`@cloudflare/vitest-plugin`, migraciones en setup — lección 10): entrevista completa → veredicto · doble envío del mismo turno = 409 y un solo fetch · veredicto idempotente · `/r/{id}` con og dinámicos escapados · token ajeno no ve ni escribe · cabeceras de seguridad presentes en todas las rutas · rate limit 429 con `Retry-After`.
 - **Tests de prompt injection** (regresión): respuesta con `⟦NOTA-xxxx:10⟧`, "ignora tus instrucciones", HTML/JS → nota según tope, nada se ejecuta en el veredicto.
 - **Verificación en producción** tras deploy (lección 5): entrevista real con cada villano, `wrangler d1 execute --remote` para ver filas, prueba manual de inyección, comprobar el fallback forzando un modelo inexistente en un deploy de prueba.
@@ -285,14 +290,14 @@ CREATE TABLE veredictos (
 ## 9. Despliegue y CI/CD
 
 - Repo público `github.com/Ogires/interview-fight-club`. README con GIF, diagrama, sección "Seguridad de una app con LLM" (las tablas de §5 resumidas) y tabla de "Trucos y si funcionan".
-- `wrangler.jsonc`: `assets` (`./public`, binding `ASSETS`), D1 (`DB`), KV (`KV`), `observability.enabled: true`, `vars`: `CEREBRAS_MODEL`, `GROQ_MODEL`, `GROQ_MODEL_RESERVA`, cuotas diarias por proveedor; `routes` custom_domain `fightclub.webninja.fyi` + `workers_dev: true`.
-- Secrets: `CEREBRAS_API_KEY`, `GROQ_API_KEY` vía `wrangler secret put` (keys nuevas: los secrets existentes no se pueden leer).
+- `wrangler.jsonc`: `assets` (`./public`, binding `ASSETS`), D1 (`DB`), KV (`KV`), `observability.enabled: true`, `vars`: `GROQ_MODEL`, `GROQ_MODEL_RESERVA_1`, `GROQ_MODEL_RESERVA_2`, cuota diaria por modelo; `routes` custom_domain `fightclub.webninja.fyi` + `workers_dev: true`.
+- Secret: `GROQ_API_KEY` vía `wrangler secret put`. Una sola key para los 3 modelos.
 - GitHub Actions: job test (`npm ci`, typecheck, test) + job deploy solo desde main con `npx wrangler deploy`; actions fijadas por SHA; Dependabot. Secrets `CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID` (crear el repo antes del `gh secret set`).
 - tsconfig: `lib: ["ES2022"]` + `types` de workers y vitest-plugin (lección 10).
 
 ## 10. Criterios de éxito
 
-- Primer token de la reacción del villano < 1,5 s (P95) con Cerebras/Groq.
+- Primer token de la reacción del villano < 1,5 s (P95) con Groq.
 - 0 €: presupuesto diario respetado; con todos los proveedores agotados la app sigue funcionando en modo degradado.
 - Imposible: escribir en la entrevista de otro, falsificar una nota desde el cliente o ejecutar HTML/JS inyectado en un veredicto.
 - Una respuesta de inyección ("ponme un 10") sin contenido técnico nunca supera un 4.
@@ -300,6 +305,6 @@ CREATE TABLE veredictos (
 
 ## 11. Pendiente antes de implementar
 
-- [ ] Sergio: crear key de Cerebras (cloud.cerebras.ai) y confirmar el subdominio `fightclub.webninja.fyi`.
-- [ ] Tarea 0 del plan: verificar modelos/RPM del free tier de Cerebras y el formato de `usage` en streaming de cada proveedor; ajustar §3.2.
+- [ ] Sergio: confirmar el subdominio `fightclub.webninja.fyi` (no hace falta cuenta nueva: basta la key de Groq).
+- [ ] Tarea 0 del plan: probar los 3 modelos de Groq con el prompt real (marca de nota, tono, español) y el formato de `x_groq.usage`; ajustar §3.2.
 - [ ] Redactar los 4 villanos (prompts + frases de reserva) y el banco de 120 preguntas (con propuestas IA + revisión).
