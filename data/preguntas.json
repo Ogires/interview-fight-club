@@ -1,0 +1,1450 @@
+[
+  {
+    "id": "frontend-junior-001",
+    "stack": "frontend",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre var, let y const?",
+    "rubrica": [
+      { "concepto": "ámbito de bloque", "sinonimos": ["bloque", "block scope", "scope de bloque", "ámbito de función", "function scope", "scope"] },
+      { "concepto": "hoisting", "sinonimos": ["hoisting", "elevación", "eleva", "se eleva", "zona muerta temporal", "temporal dead zone", "tdz"] },
+      { "concepto": "reasignación", "sinonimos": ["reasignar", "reasignación", "reasignarse", "constante", "inmutable", "no se puede cambiar"] }
+    ],
+    "esperado": "let y const tienen ámbito de bloque; var, de función. var se eleva inicializada a undefined; let y const quedan en la zona muerta temporal hasta su declaración. const impide reasignar la variable, pero no mutar el objeto al que apunta."
+  },
+  {
+    "id": "frontend-junior-002",
+    "stack": "frontend",
+    "nivel": "junior",
+    "texto": "¿Qué es el DOM?",
+    "rubrica": [
+      { "concepto": "árbol de nodos", "sinonimos": ["árbol", "tree", "nodo", "nodos", "jerarquía", "jerárquica"] },
+      { "concepto": "representación del documento", "sinonimos": ["documento", "html", "representación", "modelo de objetos", "document object model", "en memoria"] },
+      { "concepto": "manipulable desde JavaScript", "sinonimos": ["javascript", "js", "api", "modificar", "manipular", "cambiar la página", "queryselector"] }
+    ],
+    "esperado": "El Document Object Model es la representación en memoria del HTML como un árbol de nodos, que el navegador expone como API para leer y modificar la página desde JavaScript."
+  },
+  {
+    "id": "frontend-junior-003",
+    "stack": "frontend",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre == y === en JavaScript?",
+    "rubrica": [
+      { "concepto": "coerción de tipos", "sinonimos": ["coerción", "coercion", "conversión", "convierte", "conversión de tipos", "type coercion", "castea"] },
+      { "concepto": "igualdad estricta", "sinonimos": ["estricta", "estricto", "strict", "mismo tipo", "tipo y valor", "sin conversión"] }
+    ],
+    "esperado": "== compara tras convertir los operandos a un tipo común (coerción), con resultados sorprendentes como 0 == ''; === exige mismo tipo y mismo valor, sin conversiones."
+  },
+  {
+    "id": "frontend-junior-004",
+    "stack": "frontend",
+    "nivel": "junior",
+    "texto": "¿Qué es un evento en el navegador y cómo se propaga por el DOM?",
+    "rubrica": [
+      { "concepto": "listener", "sinonimos": ["listener", "listeners", "addeventlistener", "manejador", "handler", "escuchar", "escuchador"] },
+      { "concepto": "burbujeo", "sinonimos": ["burbujeo", "bubbling", "burbuja", "sube", "hacia arriba", "propaga hacia los padres"] },
+      { "concepto": "captura", "sinonimos": ["captura", "capturing", "capture", "fase de captura", "baja desde la raíz"] }
+    ],
+    "esperado": "Un evento es una señal (clic, tecla...) que se escucha con addEventListener. Se propaga en fase de captura desde la raíz hasta el elemento objetivo y luego en burbujeo de vuelta hacia arriba; stopPropagation corta la propagación."
+  },
+  {
+    "id": "frontend-junior-005",
+    "stack": "frontend",
+    "nivel": "junior",
+    "texto": "¿Cuándo usarías flexbox y cuándo CSS grid?",
+    "rubrica": [
+      { "concepto": "una dimensión", "sinonimos": ["una dimensión", "unidimensional", "fila o columna", "un eje", "una fila", "una columna", "1d"] },
+      { "concepto": "dos dimensiones", "sinonimos": ["dos dimensiones", "bidimensional", "filas y columnas", "rejilla", "cuadrícula", "2d"] }
+    ],
+    "esperado": "Flexbox distribuye elementos en una dimensión (una fila o una columna) y brilla en componentes; grid maqueta en dos dimensiones (filas y columnas a la vez), ideal para el layout de una página."
+  },
+  {
+    "id": "frontend-junior-006",
+    "stack": "frontend",
+    "nivel": "junior",
+    "texto": "¿Qué es el modelo de caja de CSS y qué cambia box-sizing: border-box?",
+    "rubrica": [
+      { "concepto": "capas de la caja", "sinonimos": ["contenido", "padding", "relleno", "border", "borde", "margin", "margen"] },
+      { "concepto": "border-box incluye padding y borde en el tamaño", "sinonimos": ["border-box", "incluye", "incluido", "ancho total", "width total", "no se suma", "no suma", "content-box"] }
+    ],
+    "esperado": "Cada elemento es una caja con contenido, padding, borde y margen. Por defecto (content-box) width solo mide el contenido y padding y borde se suman; con border-box, width incluye padding y borde, así que el tamaño final es el que declaras."
+  },
+  {
+    "id": "frontend-junior-007",
+    "stack": "frontend",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre localStorage, sessionStorage y las cookies?",
+    "rubrica": [
+      { "concepto": "persistencia", "sinonimos": ["persiste", "persistente", "persistencia", "se borra al cerrar", "pestaña", "sesión", "caduca", "caducidad", "expiración", "expires"] },
+      { "concepto": "envío al servidor", "sinonimos": ["servidor", "se envían", "se envía", "cada petición", "peticiones", "cabecera", "http", "automáticamente"] },
+      { "concepto": "capacidad", "sinonimos": ["tamaño", "capacidad", "4 kb", "4kb", "5 mb", "5mb", "kb", "mb", "límite"] }
+    ],
+    "esperado": "localStorage persiste sin caducidad por origen; sessionStorage dura lo que la pestaña. Ambos guardan unos 5 MB y solo los lee JavaScript. Las cookies (unos 4 KB) tienen caducidad configurable y el navegador las envía en cada petición al servidor; pueden ser HttpOnly."
+  },
+  {
+    "id": "frontend-junior-008",
+    "stack": "frontend",
+    "nivel": "junior",
+    "texto": "¿Qué es el HTML semántico y por qué importa?",
+    "rubrica": [
+      { "concepto": "etiquetas con significado", "sinonimos": ["significado", "etiquetas", "header", "nav", "main", "article", "section", "footer", "semántica"] },
+      { "concepto": "accesibilidad", "sinonimos": ["accesibilidad", "accesible", "a11y", "lector de pantalla", "lectores de pantalla", "screen reader", "screen readers"] },
+      { "concepto": "SEO", "sinonimos": ["seo", "buscadores", "google", "posicionamiento", "indexación"] }
+    ],
+    "esperado": "Es usar cada etiqueta por lo que significa (header, nav, main, article, button...) en vez de divs genéricos. Da estructura a lectores de pantalla y teclado (accesibilidad), ayuda a los buscadores (SEO) y hace el código más mantenible."
+  },
+  {
+    "id": "frontend-mid-001",
+    "stack": "frontend",
+    "nivel": "mid",
+    "texto": "¿Qué es el event loop de JavaScript y en qué orden se ejecutan microtareas y macrotareas?",
+    "rubrica": [
+      { "concepto": "un hilo con pila de llamadas", "sinonimos": ["un hilo", "un solo hilo", "single thread", "single-threaded", "monohilo", "pila de llamadas", "call stack", "cola", "queue"] },
+      { "concepto": "microtareas primero", "sinonimos": ["microtarea", "microtareas", "microtask", "microtasks", "promesa", "promesas", "promise", "promises", "then", "queuemicrotask"] },
+      { "concepto": "macrotareas", "sinonimos": ["macrotarea", "macrotareas", "macrotask", "settimeout", "setinterval", "task queue", "cola de tareas", "tareas"] }
+    ],
+    "esperado": "JavaScript ejecuta en un hilo con una pila de llamadas. Cuando la pila se vacía, el event loop ejecuta todas las microtareas pendientes (promesas, queueMicrotask) y después toma la siguiente macrotarea (setTimeout, eventos, I/O). El navegador puede pintar entre macrotareas."
+  },
+  {
+    "id": "frontend-mid-002",
+    "stack": "frontend",
+    "nivel": "mid",
+    "texto": "¿Qué es un closure en JavaScript y para qué se usa?",
+    "rubrica": [
+      { "concepto": "recuerda su ámbito léxico", "sinonimos": ["ámbito léxico", "lexical scope", "scope", "ámbito", "entorno", "contexto", "recuerda"] },
+      { "concepto": "acceso a variables de la función externa", "sinonimos": ["variables", "función externa", "exterior", "externa", "padre", "ya ha terminado", "termina", "sigue accediendo"] },
+      { "concepto": "usos", "sinonimos": ["privada", "privadas", "privado", "encapsular", "encapsulación", "fábrica", "factory", "callback", "callbacks", "memoización", "contador"] }
+    ],
+    "esperado": "Un closure es una función que conserva acceso a las variables del ámbito léxico donde se creó, incluso cuando la función externa ya ha terminado. Se usa para estado privado, fábricas de funciones, callbacks que recuerdan contexto y memoización."
+  },
+  {
+    "id": "frontend-mid-003",
+    "stack": "frontend",
+    "nivel": "mid",
+    "texto": "¿Qué diferencia hay entre debounce y throttle?",
+    "rubrica": [
+      { "concepto": "debounce espera a que paren los eventos", "sinonimos": ["debounce", "espera", "esperar", "último", "última", "pausa", "inactividad", "deja de", "dejan de"] },
+      { "concepto": "throttle limita la frecuencia", "sinonimos": ["throttle", "como máximo", "cada x", "intervalo", "frecuencia", "una vez cada", "limita", "ritmo"] },
+      { "concepto": "casos de uso", "sinonimos": ["scroll", "resize", "buscador", "búsqueda", "autocompletado", "input", "teclear", "escribir"] }
+    ],
+    "esperado": "Debounce ejecuta la función solo cuando los eventos dejan de llegar durante X ms (ideal para un buscador mientras se teclea). Throttle la ejecuta como máximo una vez cada X ms aunque sigan llegando eventos (ideal para scroll o resize)."
+  },
+  {
+    "id": "frontend-mid-004",
+    "stack": "frontend",
+    "nivel": "mid",
+    "texto": "¿Qué es CORS y por qué el navegador bloquea un fetch a otro dominio?",
+    "rubrica": [
+      { "concepto": "política del mismo origen", "sinonimos": ["same origin", "same-origin", "mismo origen", "origen", "origin", "otro dominio", "dominio distinto"] },
+      { "concepto": "cabeceras Access-Control", "sinonimos": ["access-control-allow-origin", "access-control", "cabecera", "cabeceras", "header", "headers", "servidor permite"] },
+      { "concepto": "petición preflight", "sinonimos": ["preflight", "options", "petición previa", "verificación previa"] }
+    ],
+    "esperado": "Por la política del mismo origen, el navegador no deja a un script leer respuestas de otro origen salvo que el servidor lo autorice con cabeceras CORS (Access-Control-Allow-Origin...). Para peticiones no simples envía antes un preflight OPTIONS. Es una protección del navegador, no del servidor."
+  },
+  {
+    "id": "frontend-mid-005",
+    "stack": "frontend",
+    "nivel": "mid",
+    "texto": "En librerías como React, ¿qué es el Virtual DOM y qué es la reconciliación?",
+    "rubrica": [
+      { "concepto": "representación en memoria", "sinonimos": ["virtual dom", "vdom", "copia", "en memoria", "representación", "objetos javascript", "árbol virtual"] },
+      { "concepto": "comparación (diffing)", "sinonimos": ["diff", "diffing", "compara", "comparar", "comparación", "reconciliación", "reconciliation", "anterior y nuevo"] },
+      { "concepto": "aplica solo los cambios", "sinonimos": ["solo lo que cambia", "solo los cambios", "mínimos", "cambios", "diferencias", "dom real", "parches", "patch", "actualiza solo"] }
+    ],
+    "esperado": "El Virtual DOM es una representación ligera de la UI en objetos JavaScript. Al cambiar el estado se genera un árbol nuevo, se compara con el anterior (reconciliación o diffing, apoyándose en las key de las listas) y solo se aplican al DOM real las diferencias mínimas."
+  },
+  {
+    "id": "frontend-mid-006",
+    "stack": "frontend",
+    "nivel": "mid",
+    "texto": "¿Qué miden las Core Web Vitals actuales (LCP, INP y CLS)?",
+    "rubrica": [
+      { "concepto": "LCP: carga del contenido principal", "sinonimos": ["lcp", "largest contentful paint", "elemento más grande", "contenido principal", "carga", "tarda en cargar"] },
+      { "concepto": "INP: respuesta a la interacción", "sinonimos": ["inp", "interaction to next paint", "interacción", "interacciones", "responde", "respuesta", "fid"] },
+      { "concepto": "CLS: estabilidad visual", "sinonimos": ["cls", "cumulative layout shift", "estabilidad visual", "saltos", "se mueve", "desplazamientos", "layout shift"] }
+    ],
+    "esperado": "LCP mide cuánto tarda en pintarse el elemento de contenido más grande (bueno: ≤ 2,5 s). INP mide la latencia de las interacciones hasta el siguiente pintado (bueno: ≤ 200 ms; sustituyó a FID en 2024). CLS mide los saltos inesperados del layout (bueno: ≤ 0,1)."
+  },
+  {
+    "id": "frontend-mid-007",
+    "stack": "frontend",
+    "nivel": "mid",
+    "texto": "¿Qué diferencia hay entre renderizado en cliente (CSR) y en servidor (SSR)?",
+    "rubrica": [
+      { "concepto": "dónde se genera el HTML", "sinonimos": ["servidor", "server", "cliente", "navegador", "html generado", "html completo", "html vacío", "javascript genera"] },
+      { "concepto": "SEO y primera carga", "sinonimos": ["seo", "primera carga", "primer pintado", "first paint", "fcp", "tiempo de carga", "indexar", "buscadores"] },
+      { "concepto": "hidratación", "sinonimos": ["hidratación", "hydration", "hidratar", "hidrata", "interactivo", "interactividad"] }
+    ],
+    "esperado": "En CSR el servidor envía un HTML casi vacío y el JavaScript construye la página en el navegador: primera carga más lenta y peor SEO, pero navegación fluida. En SSR el servidor envía el HTML ya renderizado (contenido visible antes, mejor SEO) y luego el cliente lo hidrata para hacerlo interactivo."
+  },
+  {
+    "id": "frontend-mid-008",
+    "stack": "frontend",
+    "nivel": "mid",
+    "texto": "¿Qué es la especificidad en CSS y cómo se decide qué regla gana?",
+    "rubrica": [
+      { "concepto": "prioridad entre reglas", "sinonimos": ["prioridad", "gana", "se aplica", "peso", "conflicto", "precedencia"] },
+      { "concepto": "ids > clases > etiquetas", "sinonimos": ["id", "ids", "clase", "clases", "etiqueta", "etiquetas", "elemento", "elementos", "selector", "selectores", "pseudoclases"] },
+      { "concepto": "!important, estilos en línea y orden", "sinonimos": ["important", "!important", "inline", "en línea", "estilo en línea", "orden", "la última", "cascada", "origen"] }
+    ],
+    "esperado": "Cuando varias reglas aplican a un elemento, gana la de mayor especificidad: estilos en línea > ids > clases, atributos y pseudoclases > etiquetas. A igual especificidad gana la última declarada (cascada). !important pasa por encima de todo eso y conviene evitarlo."
+  },
+  {
+    "id": "frontend-senior-001",
+    "stack": "frontend",
+    "nivel": "senior",
+    "texto": "¿Qué es un ataque XSS y cómo lo mitigas en el frontend?",
+    "rubrica": [
+      { "concepto": "inyección de script", "sinonimos": ["inyección", "inyectar", "script", "scripts", "código malicioso", "javascript malicioso", "atacante", "ejecute javascript", "ejecutar javascript", "cross-site scripting"] },
+      { "concepto": "escapar o sanear la salida", "sinonimos": ["escapar", "escape", "escapado", "sanear", "sanitizar", "sanitize", "textcontent", "innerhtml", "dompurify", "encoding", "codificar"] },
+      { "concepto": "Content Security Policy", "sinonimos": ["csp", "content security policy", "política de seguridad de contenido", "nonce"] }
+    ],
+    "esperado": "XSS es conseguir que la página ejecute JavaScript del atacante a partir de datos no confiables. Se mitiga tratando la entrada como texto (textContent, escapado automático del framework, nada de innerHTML con datos de usuario o sanearlos con DOMPurify), una CSP estricta sin inline y cookies HttpOnly."
+  },
+  {
+    "id": "frontend-senior-002",
+    "stack": "frontend",
+    "nivel": "senior",
+    "texto": "¿Qué es el code splitting y cómo decides dónde partir el bundle?",
+    "rubrica": [
+      { "concepto": "dividir el bundle", "sinonimos": ["chunk", "chunks", "trozos", "dividir", "partir", "split", "splitting", "bundle", "paquetes"] },
+      { "concepto": "carga bajo demanda", "sinonimos": ["import dinámico", "dynamic import", "lazy", "lazy loading", "carga diferida", "bajo demanda", "on demand", "cuando se necesita"] },
+      { "concepto": "por ruta o componente pesado", "sinonimos": ["ruta", "rutas", "route", "routes", "página", "páginas", "componente pesado", "componentes pesados", "vendor"] }
+    ],
+    "esperado": "Es dividir el JavaScript en varios chunks que se cargan bajo demanda con import() dinámico, en vez de un bundle único. Lo natural es partir por rutas y por componentes pesados que no se ven al inicio (editores, gráficas, modales), separando dependencias estables para cachearlas mejor."
+  },
+  {
+    "id": "frontend-senior-003",
+    "stack": "frontend",
+    "nivel": "senior",
+    "texto": "¿Cómo funciona la caché HTTP del navegador con Cache-Control y ETag?",
+    "rubrica": [
+      { "concepto": "Cache-Control y frescura", "sinonimos": ["cache-control", "max-age", "no-cache", "no-store", "immutable", "caducidad", "fresco", "tiempo de vida"] },
+      { "concepto": "revalidación condicional", "sinonimos": ["etag", "304", "if-none-match", "last-modified", "if-modified-since", "revalidar", "revalidación", "not modified"] },
+      { "concepto": "versionado de ficheros", "sinonimos": ["hash", "fingerprint", "fingerprinting", "versionado", "versión en el nombre", "cache busting", "nombre con hash"] }
+    ],
+    "esperado": "Cache-Control dice cuánto tiempo es fresca una respuesta (max-age) o si debe revalidarse (no-cache) o no guardarse (no-store). Pasado ese tiempo, el navegador revalida con If-None-Match usando el ETag y el servidor responde 304 si no cambió. Para estáticos: hash en el nombre e immutable con max-age largo."
+  },
+  {
+    "id": "frontend-senior-004",
+    "stack": "frontend",
+    "nivel": "senior",
+    "texto": "¿Qué es un service worker y qué permite hacer?",
+    "rubrica": [
+      { "concepto": "proxy entre la app y la red", "sinonimos": ["proxy", "intercepta", "interceptar", "fetch", "peticiones", "entre la app y la red", "red"] },
+      { "concepto": "offline y caché", "sinonimos": ["offline", "sin conexión", "caché", "cache", "cache api", "pwa"] },
+      { "concepto": "ciclo de vida y requisitos", "sinonimos": ["ciclo de vida", "install", "activate", "https", "segundo plano", "background", "push", "notificaciones", "otro hilo"] }
+    ],
+    "esperado": "Es un script que el navegador ejecuta aparte de la página, sin acceso al DOM, y que actúa como proxy de sus peticiones: puede responder desde la Cache API (offline, estrategias cache-first o network-first) y recibir notificaciones push. Exige HTTPS y tiene ciclo de vida propio (install, activate)."
+  },
+  {
+    "id": "frontend-senior-005",
+    "stack": "frontend",
+    "nivel": "senior",
+    "texto": "¿Qué problema resuelve un gestor de estado global y qué inconvenientes tiene frente al estado local?",
+    "rubrica": [
+      { "concepto": "compartir estado sin prop drilling", "sinonimos": ["prop drilling", "pasar props", "compartir", "compartido", "muchos componentes", "componentes lejanos"] },
+      { "concepto": "fuente única de verdad", "sinonimos": ["fuente única", "única fuente de verdad", "single source of truth", "centralizado", "centralizar", "store", "predecible"] },
+      { "concepto": "costes", "sinonimos": ["complejidad", "boilerplate", "re-render", "re-renders", "rerender", "renders", "acoplamiento", "sobreingeniería"] }
+    ],
+    "esperado": "Centraliza el estado que comparten componentes lejanos, evitando el prop drilling y dando una fuente única de verdad con cambios predecibles. A cambio añade complejidad, boilerplate, acoplamiento al store y re-renders si no se seleccionan bien los datos; el estado de UI local debería seguir siendo local."
+  },
+  {
+    "id": "frontend-senior-006",
+    "stack": "frontend",
+    "nivel": "senior",
+    "texto": "¿Qué es el critical rendering path y cómo lo optimizarías?",
+    "rubrica": [
+      { "concepto": "DOM + CSSOM → render tree → layout → paint", "sinonimos": ["cssom", "dom", "render tree", "árbol de renderizado", "layout", "paint", "pintado"] },
+      { "concepto": "recursos bloqueantes", "sinonimos": ["bloqueante", "bloqueantes", "render-blocking", "bloquea", "bloquean", "defer", "async"] },
+      { "concepto": "priorizar lo crítico", "sinonimos": ["css crítico", "critical css", "inline", "preload", "priorizar", "above the fold", "minimizar", "comprimir"] }
+    ],
+    "esperado": "Son los pasos para pasar de HTML a píxeles: construir DOM y CSSOM, combinarlos en el render tree, layout y paint. El CSS y el JS síncrono lo bloquean. Se optimiza con CSS crítico en línea, defer o async en scripts, preload de lo esencial y reduciendo el tamaño de los recursos del primer pintado."
+  },
+  {
+    "id": "frontend-senior-007",
+    "stack": "frontend",
+    "nivel": "senior",
+    "texto": "¿Qué es ARIA y cuándo NO deberías usarlo?",
+    "rubrica": [
+      { "concepto": "roles y atributos para tecnologías de asistencia", "sinonimos": ["role", "roles", "aria-label", "atributos", "lector de pantalla", "lectores de pantalla", "tecnologías de asistencia", "accesibilidad"] },
+      { "concepto": "preferir HTML nativo", "sinonimos": ["nativo", "nativos", "semántico", "html semántico", "button", "primera regla", "elemento nativo"] },
+      { "concepto": "no añade comportamiento", "sinonimos": ["comportamiento", "teclado", "foco", "focus", "no añade", "solo semántica", "tabindex"] }
+    ],
+    "esperado": "ARIA son roles, estados y propiedades que describen la UI a las tecnologías de asistencia. Primera regla: no usarlo si existe un elemento HTML nativo (button, nav...), porque ARIA solo cambia la semántica y no aporta teclado ni foco; un ARIA mal puesto es peor que ninguno."
+  },
+  {
+    "id": "frontend-senior-008",
+    "stack": "frontend",
+    "nivel": "senior",
+    "texto": "¿Cuáles son las causas típicas de fugas de memoria en una SPA y cómo las detectas?",
+    "rubrica": [
+      { "concepto": "listeners y suscripciones sin limpiar", "sinonimos": ["listener", "listeners", "removeeventlistener", "eventos", "suscripción", "suscripciones", "unsubscribe", "cleanup"] },
+      { "concepto": "timers sin cancelar", "sinonimos": ["setinterval", "intervalo", "intervalos", "timer", "timers", "temporizador", "temporizadores", "cleartimeout", "clearinterval"] },
+      { "concepto": "referencias retenidas", "sinonimos": ["referencia", "referencias", "closure", "closures", "nodos desconectados", "detached", "caché", "variables globales"] },
+      { "concepto": "detección", "sinonimos": ["devtools", "heap snapshot", "heap snapshots", "snapshot", "pestaña memory", "memory", "perfilador", "profiler"] }
+    ],
+    "esperado": "Listeners y suscripciones que no se quitan al desmontar, setInterval sin cancelar, closures o cachés que retienen objetos grandes y nodos DOM desconectados aún referenciados. Se detectan comparando heap snapshots en la pestaña Memory de DevTools tras repetir una acción."
+  },
+  {
+    "id": "backend-junior-001",
+    "stack": "backend",
+    "nivel": "junior",
+    "texto": "¿Qué es una API REST?",
+    "rubrica": [
+      { "concepto": "recursos identificados por URL", "sinonimos": ["recurso", "recursos", "url", "urls", "uri", "endpoint", "endpoints", "rutas"] },
+      { "concepto": "verbos HTTP", "sinonimos": ["get", "post", "put", "patch", "delete", "verbos", "verbos http", "métodos http", "métodos"] },
+      { "concepto": "sin estado", "sinonimos": ["sin estado", "stateless", "no guarda estado", "cada petición"] }
+    ],
+    "esperado": "Un estilo de API sobre HTTP en el que cada recurso tiene una URL y se opera con los verbos HTTP (GET leer, POST crear, PUT/PATCH modificar, DELETE borrar), con códigos de estado estándar y sin estado en el servidor entre peticiones; normalmente intercambia JSON."
+  },
+  {
+    "id": "backend-junior-002",
+    "stack": "backend",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre una petición GET y una POST?",
+    "rubrica": [
+      { "concepto": "GET solo lee", "sinonimos": ["leer", "lectura", "obtener", "consultar", "seguro", "idempotente", "sin efectos", "no modifica"] },
+      { "concepto": "POST envía datos en el cuerpo", "sinonimos": ["cuerpo", "body", "crear", "enviar datos", "envía datos", "payload", "formulario", "modifica"] },
+      { "concepto": "parámetros en la URL y caché", "sinonimos": ["url", "query string", "query params", "parámetros", "caché", "cache", "cachear", "marcadores", "historial"] }
+    ],
+    "esperado": "GET pide un recurso sin modificar nada (seguro e idempotente); sus parámetros van en la URL, así que se cachea, queda en el historial y no debe llevar datos sensibles. POST envía datos en el cuerpo para crear o procesar algo, tiene efectos y no es idempotente."
+  },
+  {
+    "id": "backend-junior-003",
+    "stack": "backend",
+    "nivel": "junior",
+    "texto": "¿Qué significan los códigos de estado HTTP 2xx, 4xx y 5xx? Pon un ejemplo de cada uno.",
+    "rubrica": [
+      { "concepto": "2xx éxito", "sinonimos": ["2xx", "200", "201", "204", "éxito", "ok", "correcto"] },
+      { "concepto": "4xx error del cliente", "sinonimos": ["4xx", "400", "401", "403", "404", "422", "429", "error del cliente", "culpa del cliente", "cliente"] },
+      { "concepto": "5xx error del servidor", "sinonimos": ["5xx", "500", "502", "503", "504", "error del servidor", "fallo del servidor", "servidor"] }
+    ],
+    "esperado": "2xx indica éxito (200 OK, 201 Created). 4xx indica que la petición del cliente es incorrecta o no está permitida (400 Bad Request, 401 sin autenticar, 403 prohibido, 404 no encontrado). 5xx indica que el servidor falló al procesar una petición válida (500, 503)."
+  },
+  {
+    "id": "backend-junior-004",
+    "stack": "backend",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre autenticación y autorización?",
+    "rubrica": [
+      { "concepto": "autenticación: quién eres", "sinonimos": ["quién eres", "identidad", "identificar", "identifica", "login", "credenciales", "authentication", "authn", "verificar"] },
+      { "concepto": "autorización: qué puedes hacer", "sinonimos": ["qué puedes hacer", "permisos", "permiso", "acceso", "roles", "authorization", "authz", "permitido"] }
+    ],
+    "esperado": "La autenticación comprueba quién eres (usuario y contraseña, token, MFA); la autorización decide qué puedes hacer una vez identificado (roles, permisos sobre recursos). Siempre va primero la autenticación; un 401 indica fallo de autenticación y un 403, de autorización."
+  },
+  {
+    "id": "backend-junior-005",
+    "stack": "backend",
+    "nivel": "junior",
+    "texto": "¿Por qué no se guardan las contraseñas en texto plano y cómo se deben guardar?",
+    "rubrica": [
+      { "concepto": "hash de un solo sentido", "sinonimos": ["hash", "hashes", "hashear", "hasheada", "hasheadas", "hashing", "un solo sentido", "irreversible"] },
+      { "concepto": "sal única", "sinonimos": ["sal", "salt", "salting", "aleatoria", "rainbow tables", "tablas arcoíris"] },
+      { "concepto": "algoritmo lento", "sinonimos": ["bcrypt", "argon2", "argon2id", "scrypt", "pbkdf2", "lento", "coste", "costoso"] }
+    ],
+    "esperado": "Porque una filtración expondría todas las cuentas (y la gente reutiliza contraseñas). Se guardan con un hash lento y diseñado para contraseñas (Argon2id, bcrypt, scrypt) y una sal aleatoria por usuario, que impide usar tablas precalculadas. Nunca con MD5 o SHA-256 a pelo ni con cifrado reversible."
+  },
+  {
+    "id": "backend-junior-006",
+    "stack": "backend",
+    "nivel": "junior",
+    "texto": "¿Qué es JSON y por qué es el formato habitual en las APIs web?",
+    "rubrica": [
+      { "concepto": "formato de texto ligero", "sinonimos": ["texto", "ligero", "formato", "clave valor", "clave-valor", "pares", "serialización"] },
+      { "concepto": "independiente del lenguaje", "sinonimos": ["legible", "cualquier lenguaje", "independiente", "interoperable", "estándar", "nativo en javascript"] },
+      { "concepto": "tipos de datos", "sinonimos": ["objeto", "objetos", "array", "arrays", "string", "strings", "números", "booleanos", "null", "tipos"] }
+    ],
+    "esperado": "JSON es un formato de texto ligero para serializar datos como objetos (pares clave-valor), arrays, strings, números, booleanos y null. Es legible, más compacto que XML, nativo en JavaScript y todos los lenguajes tienen parser, por eso es el estándar de facto en APIs."
+  },
+  {
+    "id": "backend-junior-007",
+    "stack": "backend",
+    "nivel": "junior",
+    "texto": "¿Para qué sirven las variables de entorno y por qué no se escriben secretos en el código?",
+    "rubrica": [
+      { "concepto": "configuración por entorno", "sinonimos": ["entorno", "entornos", "desarrollo", "producción", "configuración", "config", "staging"] },
+      { "concepto": "secretos fuera del código", "sinonimos": ["secreto", "secretos", "claves", "api key", "api keys", "contraseñas", "credenciales", "repositorio", "git", "filtrar"] },
+      { "concepto": "sin cambiar el código", "sinonimos": ["sin recompilar", "sin cambiar el código", "sin tocar el código", "12 factor", "twelve-factor", "doce factores", "mismo artefacto"] }
+    ],
+    "esperado": "Permiten configurar el mismo código para cada entorno (desarrollo, producción) sin modificarlo, como pide la metodología twelve-factor. Los secretos en el código acaban en el repositorio y su historial, al alcance de cualquiera con acceso; en variables de entorno o un gestor de secretos se rotan sin tocar el código."
+  },
+  {
+    "id": "backend-junior-008",
+    "stack": "backend",
+    "nivel": "junior",
+    "texto": "¿Qué es un middleware en un framework web como Express?",
+    "rubrica": [
+      { "concepto": "función en la cadena petición-respuesta", "sinonimos": ["cadena", "pipeline", "petición", "request", "respuesta", "response", "entre", "intermedio"] },
+      { "concepto": "pasa al siguiente o corta", "sinonimos": ["next", "siguiente", "pasa al siguiente", "cortar", "corta", "termina la respuesta", "orden"] },
+      { "concepto": "lógica transversal", "sinonimos": ["logging", "log", "logs", "autenticación", "cors", "compresión", "transversal", "errores", "parsear el body"] }
+    ],
+    "esperado": "Es una función que se ejecuta en cadena entre la llegada de la petición y la respuesta: puede leer o modificar request y response, responder ella misma o llamar a next() para pasar al siguiente. Se usa para lógica transversal como logging, autenticación, CORS, parseo del body o manejo de errores."
+  },
+  {
+    "id": "backend-mid-001",
+    "stack": "backend",
+    "nivel": "mid",
+    "texto": "¿Qué significa que un método HTTP sea idempotente y por qué importa?",
+    "rubrica": [
+      { "concepto": "mismo efecto aunque se repita", "sinonimos": ["mismo efecto", "mismo resultado", "varias veces", "repetir", "repetida", "repetirla", "una o n veces"] },
+      { "concepto": "qué métodos lo son", "sinonimos": ["put", "delete", "get", "post", "head"] },
+      { "concepto": "reintentos seguros", "sinonimos": ["reintento", "reintentos", "reintentar", "retry", "retries", "idempotency key", "idempotency-key", "clave de idempotencia"] }
+    ],
+    "esperado": "Una operación es idempotente si ejecutarla una o varias veces deja el servidor en el mismo estado. GET, PUT y DELETE lo son; POST no. Importa porque ante un timeout el cliente puede reintentar sin duplicar efectos; para POST críticos (pagos) se usa una Idempotency-Key."
+  },
+  {
+    "id": "backend-mid-002",
+    "stack": "backend",
+    "nivel": "mid",
+    "texto": "¿Qué contiene un JWT y qué riesgos tiene usarlo como token de sesión?",
+    "rubrica": [
+      { "concepto": "cabecera, payload y firma", "sinonimos": ["cabecera", "header", "payload", "claims", "firma", "firmado", "signature"] },
+      { "concepto": "firmado, no cifrado", "sinonimos": ["no cifrado", "no está cifrado", "base64", "base64url", "legible", "codificado", "cualquiera puede leer"] },
+      { "concepto": "revocación y expiración", "sinonimos": ["expiración", "exp", "caducidad", "revocar", "revocación", "lista negra", "refresh token", "refresh", "invalidar"] }
+    ],
+    "esperado": "Tres partes en base64url: cabecera (algoritmo), payload con claims (sub, exp...) y firma. Está firmado, no cifrado: cualquiera lee el payload, así que no lleva secretos. Al no tener estado no se puede revocar antes de exp sin lista negra; por eso se usan tokens cortos con refresh y se valida algoritmo y firma."
+  },
+  {
+    "id": "backend-mid-003",
+    "stack": "backend",
+    "nivel": "mid",
+    "texto": "¿Qué es el problema N+1 en el acceso a datos y cómo se soluciona?",
+    "rubrica": [
+      { "concepto": "una consulta por cada elemento", "sinonimos": ["una consulta por", "n consultas", "n+1", "cada elemento", "cada fila", "cada registro", "bucle", "lazy loading"] },
+      { "concepto": "join o carga anticipada", "sinonimos": ["join", "joins", "eager", "eager loading", "include", "precargar", "carga anticipada", "prefetch"] },
+      { "concepto": "agrupar en lote", "sinonimos": ["dataloader", "batch", "batching", "lote", "lotes", "agrupar", "where in", "in (...)"] }
+    ],
+    "esperado": "Ocurre al obtener N elementos con una consulta y luego lanzar una consulta más por cada uno para sus relaciones (típico del lazy loading del ORM): N+1 viajes a la base de datos. Se soluciona con un JOIN, eager loading del ORM o agrupando las claves en una sola consulta WHERE id IN (...) (como hace DataLoader)."
+  },
+  {
+    "id": "backend-mid-004",
+    "stack": "backend",
+    "nivel": "mid",
+    "texto": "¿Qué algoritmos de rate limiting conoces y qué debe devolver la API al limitar?",
+    "rubrica": [
+      { "concepto": "token bucket o leaky bucket", "sinonimos": ["token bucket", "cubo de tokens", "bucket", "leaky bucket", "cubo"] },
+      { "concepto": "ventana fija o deslizante", "sinonimos": ["ventana", "ventanas", "window", "fixed window", "sliding window", "deslizante", "fija"] },
+      { "concepto": "429 y Retry-After", "sinonimos": ["429", "retry-after", "too many requests", "demasiadas peticiones"] },
+      { "concepto": "clave de limitación", "sinonimos": ["ip", "usuario", "api key", "clave", "por cliente", "tenant"] }
+    ],
+    "esperado": "Token bucket (tokens que se reponen a ritmo fijo, admite ráfagas), leaky bucket (salida constante), ventana fija (simple pero con picos en los bordes) y ventana deslizante (más precisa). Se limita por IP, usuario o API key y se responde 429 Too Many Requests con Retry-After. El contador debe ser atómico."
+  },
+  {
+    "id": "backend-mid-005",
+    "stack": "backend",
+    "nivel": "mid",
+    "texto": "¿Para qué sirve una cola de mensajes (RabbitMQ, SQS...) entre dos servicios?",
+    "rubrica": [
+      { "concepto": "desacoplar productor y consumidor", "sinonimos": ["desacoplar", "desacopla", "desacoplamiento", "decoupling", "independientes", "productor", "consumidor"] },
+      { "concepto": "procesamiento asíncrono y picos", "sinonimos": ["asíncrono", "asíncrona", "asincronía", "async", "picos", "buffer", "amortiguar", "segundo plano"] },
+      { "concepto": "garantías de entrega", "sinonimos": ["reintento", "reintentos", "dead letter", "dlq", "at least once", "al menos una vez", "entrega", "durabilidad", "persistencia", "ack"] }
+    ],
+    "esperado": "Desacopla al productor del consumidor: el primero publica y sigue, aunque el segundo esté caído o sea lento. Absorbe picos, permite procesar en segundo plano y escalar consumidores, y da reintentos, acks y colas de mensajes fallidos (DLQ). Suele entregar al menos una vez, así que el consumidor debe ser idempotente."
+  },
+  {
+    "id": "backend-mid-006",
+    "stack": "backend",
+    "nivel": "mid",
+    "texto": "Explica el patrón cache-aside y los problemas de invalidación de caché.",
+    "rubrica": [
+      { "concepto": "leer de caché y, si falla, de la BD", "sinonimos": ["cache-aside", "lazy loading", "cache miss", "miss", "hit", "si no está", "leer de caché"] },
+      { "concepto": "TTL", "sinonimos": ["ttl", "expiración", "caducidad", "time to live", "expira"] },
+      { "concepto": "invalidar al escribir", "sinonimos": ["invalidar", "invalidación", "borrar la clave", "borrar de la caché", "al escribir", "write-through", "actualizar"] },
+      { "concepto": "datos obsoletos", "sinonimos": ["obsoleto", "obsoletos", "stale", "consistencia", "inconsistencia", "desactualizado", "desactualizados", "condición de carrera"] }
+    ],
+    "esperado": "La aplicación busca en caché; si no está (miss) lee de la base de datos y guarda el resultado con un TTL. Al escribir, actualiza la BD y borra la clave. Los problemas: datos obsoletos hasta que expira el TTL, carreras entre lectura y escritura que reinsertan un valor viejo y avalanchas al expirar claves populares."
+  },
+  {
+    "id": "backend-mid-007",
+    "stack": "backend",
+    "nivel": "mid",
+    "texto": "¿Qué problema resuelve OAuth 2.0 y en qué consiste el flujo authorization code?",
+    "rubrica": [
+      { "concepto": "delegar acceso sin compartir la contraseña", "sinonimos": ["delegar", "delegación", "delegado", "sin compartir la contraseña", "sin dar la contraseña", "sin conocer su contraseña", "sin conocer la contraseña", "en nombre del usuario", "terceros", "tercero", "aplicación de terceros"] },
+      { "concepto": "access token", "sinonimos": ["token", "tokens", "access token", "token de acceso", "refresh token", "bearer"] },
+      { "concepto": "flujo authorization code con PKCE", "sinonimos": ["authorization code", "código de autorización", "code", "pkce", "redirección", "redirect", "callback", "flujo"] },
+      { "concepto": "scopes", "sinonimos": ["scope", "scopes", "alcance", "alcances", "permisos", "consentimiento"] }
+    ],
+    "esperado": "OAuth 2.0 permite que una app acceda a recursos de un usuario en otro servicio sin conocer su contraseña, con permisos limitados (scopes). En authorization code el usuario se autentica en el servidor de autorización, que redirige con un código; la app lo canjea (con PKCE) por un access token. Es autorización; la identidad la añade OpenID Connect."
+  },
+  {
+    "id": "backend-mid-008",
+    "stack": "backend",
+    "nivel": "mid",
+    "texto": "¿Qué diferencia hay entre paginar con offset y paginar con cursor?",
+    "rubrica": [
+      { "concepto": "offset y limit", "sinonimos": ["offset", "limit", "skip", "número de página", "página"] },
+      { "concepto": "cursor o keyset", "sinonimos": ["cursor", "keyset", "seek", "último id", "after", "where id >", "desde el último"] },
+      { "concepto": "rendimiento y consistencia", "sinonimos": ["lento", "rendimiento", "recorre", "descarta", "saltar filas", "duplicados", "se saltan", "consistencia", "inserciones", "páginas profundas"] }
+    ],
+    "esperado": "Con offset (LIMIT 20 OFFSET 1000) la BD recorre y descarta todas las filas previas, cada vez más lento, y si se insertan o borran filas aparecen duplicados o saltos. Con cursor (WHERE id > último_id ORDER BY id LIMIT 20) se usa el índice y es estable, pero no permite saltar a una página arbitraria."
+  },
+  {
+    "id": "backend-senior-001",
+    "stack": "backend",
+    "nivel": "senior",
+    "texto": "¿Qué es el patrón circuit breaker y cómo funcionan sus estados?",
+    "rubrica": [
+      { "concepto": "cortar llamadas a una dependencia que falla", "sinonimos": ["cortar", "corta", "dejar de llamar", "fallo rápido", "fail fast", "dependencia", "servicio caído", "cascada"] },
+      { "concepto": "estados cerrado, abierto y semiabierto", "sinonimos": ["cerrado", "abierto", "semiabierto", "semi-abierto", "half-open", "half open", "open", "closed", "estados"] },
+      { "concepto": "umbral y respuesta alternativa", "sinonimos": ["umbral", "threshold", "fallback", "degradado", "respuesta por defecto", "errores consecutivos", "porcentaje de errores"] }
+    ],
+    "esperado": "Envuelve las llamadas a una dependencia: en estado cerrado pasan; si los fallos superan un umbral se abre y falla rápido (o devuelve un fallback) sin llamar, evitando fallos en cascada y dando respiro al servicio. Tras un tiempo pasa a semiabierto y deja pasar pruebas: si van bien se cierra, si no vuelve a abrirse."
+  },
+  {
+    "id": "backend-senior-002",
+    "stack": "backend",
+    "nivel": "senior",
+    "texto": "¿Qué es el patrón Saga y por qué se usa en lugar de una transacción distribuida?",
+    "rubrica": [
+      { "concepto": "secuencia de transacciones locales", "sinonimos": ["transacciones locales", "transacción local", "pasos", "secuencia", "cada servicio", "microservicios"] },
+      { "concepto": "acciones compensatorias", "sinonimos": ["compensación", "compensar", "compensatoria", "compensatorias", "deshacer", "rollback", "revertir"] },
+      { "concepto": "orquestación o coreografía", "sinonimos": ["orquestación", "orquestador", "orchestration", "coreografía", "choreography", "eventos"] },
+      { "concepto": "frente a 2PC", "sinonimos": ["2pc", "two-phase commit", "dos fases", "bloqueo", "consistencia eventual", "disponibilidad"] }
+    ],
+    "esperado": "Una saga divide una operación entre servicios en transacciones locales sucesivas; si un paso falla, se ejecutan acciones compensatorias de los anteriores (cancelar la reserva, devolver el cobro). Se coordina con un orquestador o por coreografía de eventos. Evita el 2PC, que bloquea y acopla, a cambio de consistencia eventual."
+  },
+  {
+    "id": "backend-senior-003",
+    "stack": "backend",
+    "nivel": "senior",
+    "texto": "¿Por qué el «exactly once» es tan difícil en mensajería y cómo se consigue su efecto en la práctica?",
+    "rubrica": [
+      { "concepto": "entrega al menos una vez con duplicados", "sinonimos": ["al menos una vez", "at least once", "at-least-once", "duplicado", "duplicados", "reentrega", "redelivery", "ack perdido"] },
+      { "concepto": "consumidor idempotente", "sinonimos": ["idempotente", "idempotencia", "deduplicar", "deduplicación", "id de mensaje", "message id", "ya procesado"] },
+      { "concepto": "outbox transaccional", "sinonimos": ["outbox", "transactional outbox", "transacción", "transaccional", "misma transacción", "atómico", "atómica"] }
+    ],
+    "esperado": "Porque entre procesar y confirmar (ack) siempre puede caerse algo: o pierdes mensajes o los repites. Se elige al menos una vez y se hace al consumidor idempotente (deduplicar por id de mensaje guardado en la misma transacción que el efecto). Al publicar, el patrón outbox escribe el evento en la BD junto al cambio y otro proceso lo envía."
+  },
+  {
+    "id": "backend-senior-004",
+    "stack": "backend",
+    "nivel": "senior",
+    "texto": "¿Qué diferencia hay entre escalar vertical y horizontalmente y qué exige lo segundo a tu servicio?",
+    "rubrica": [
+      { "concepto": "vertical: máquina más grande", "sinonimos": ["vertical", "más cpu", "más memoria", "más ram", "máquina más grande", "scale up", "escalar hacia arriba"] },
+      { "concepto": "horizontal: más instancias", "sinonimos": ["horizontal", "instancias", "réplicas", "nodos", "scale out", "balanceador", "más máquinas"] },
+      { "concepto": "servicio sin estado", "sinonimos": ["sin estado", "stateless", "sesión", "sesiones", "estado externo", "redis", "estado compartido"] }
+    ],
+    "esperado": "Escalar en vertical es dar más CPU o memoria a la misma máquina: sencillo pero con techo y punto único de fallo. En horizontal se añaden instancias tras un balanceador, sin techo práctico y con tolerancia a fallos, pero exige servicios sin estado local: sesiones, ficheros y cachés compartidas fuera (Redis, BD, almacenamiento de objetos)."
+  },
+  {
+    "id": "backend-senior-005",
+    "stack": "backend",
+    "nivel": "senior",
+    "texto": "¿Qué son los tres pilares de la observabilidad y qué aporta cada uno?",
+    "rubrica": [
+      { "concepto": "logs", "sinonimos": ["log", "logs", "registros", "trazas de texto", "eventos", "logging"] },
+      { "concepto": "métricas", "sinonimos": ["métrica", "métricas", "metrics", "contadores", "prometheus", "series temporales", "agregados"] },
+      { "concepto": "trazas distribuidas", "sinonimos": ["traza", "trazas", "tracing", "traces", "span", "spans", "opentelemetry", "correlation id", "id de correlación"] }
+    ],
+    "esperado": "Logs: eventos detallados y discretos, buenos para investigar un caso concreto. Métricas: números agregados en series temporales (latencia, errores), baratos, para dashboards y alertas. Trazas distribuidas: el recorrido de una petición entre servicios con spans, para ver dónde se va el tiempo. Se correlacionan con un id de traza."
+  },
+  {
+    "id": "backend-senior-006",
+    "stack": "backend",
+    "nivel": "senior",
+    "texto": "¿Qué es la backpressure y qué estrategias hay para gestionarla?",
+    "rubrica": [
+      { "concepto": "productor más rápido que el consumidor", "sinonimos": ["productor", "consumidor", "más rápido", "no da abasto", "saturación", "satura", "se acumula"] },
+      { "concepto": "señal para frenar", "sinonimos": ["frenar", "ralentizar", "señal", "control de flujo", "flow control", "limitar", "pausar", "pull"] },
+      { "concepto": "buffer, descarte o bloqueo", "sinonimos": ["buffer", "descartar", "descarte", "bloquear", "cola acotada", "bounded", "drop", "muestreo", "sampling", "rechazar"] }
+    ],
+    "esperado": "Es el mecanismo por el que un consumidor lento hace frenar al productor para no acumular trabajo sin límite hasta agotar la memoria. Estrategias: modelo pull o créditos, colas acotadas que bloquean al productor, descartar o muestrear lo sobrante, o rechazar con 429/503 para que el cliente reintente más tarde."
+  },
+  {
+    "id": "backend-senior-007",
+    "stack": "backend",
+    "nivel": "senior",
+    "texto": "¿Qué es una estampida de caché (cache stampede) y cómo se evita?",
+    "rubrica": [
+      { "concepto": "muchas peticiones regeneran a la vez", "sinonimos": ["expira", "expiración", "a la vez", "simultáneas", "muchas peticiones", "golpean la base de datos", "miss", "thundering herd"] },
+      { "concepto": "una sola regeneración", "sinonimos": ["lock", "bloqueo", "mutex", "single flight", "singleflight", "una sola petición", "coalescing", "solo una"] },
+      { "concepto": "expiración escalonada o anticipada", "sinonimos": ["jitter", "aleatorio", "aleatoria", "escalonar", "refresco anticipado", "stale-while-revalidate", "probabilística", "servir el valor viejo"] }
+    ],
+    "esperado": "Cuando una clave muy pedida expira, cientos de peticiones fallan la caché a la vez y lanzan la misma consulta cara contra la base de datos. Se evita con un lock o single flight (solo una regenera y el resto espera o sirve el valor viejo), refresco anticipado probabilístico y jitter en los TTL."
+  },
+  {
+    "id": "backend-senior-008",
+    "stack": "backend",
+    "nivel": "senior",
+    "texto": "¿Cómo versionas una API pública sin romper a los clientes existentes?",
+    "rubrica": [
+      { "concepto": "versión en la URL o en cabeceras", "sinonimos": ["v1", "v2", "versión", "url", "cabecera", "header", "accept", "media type"] },
+      { "concepto": "cambios compatibles", "sinonimos": ["compatibilidad", "retrocompatible", "backward compatible", "no romper", "breaking change", "breaking changes", "aditivos", "añadir campos", "opcionales"] },
+      { "concepto": "deprecación con plazo", "sinonimos": ["deprecar", "deprecación", "deprecation", "sunset", "periodo de transición", "obsoleto", "aviso", "plazo"] }
+    ],
+    "esperado": "Mientras se pueda, solo cambios aditivos y compatibles (campos nuevos opcionales, nunca renombrar ni cambiar tipos). Para un cambio incompatible, nueva versión mayor en la URL (/v2) o en cabeceras, conviviendo con la anterior, y deprecación anunciada con plazo (cabeceras Deprecation y Sunset) y métricas de quién sigue usando la vieja."
+  },
+  {
+    "id": "bbdd-junior-001",
+    "stack": "bbdd",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre una clave primaria y una clave foránea?",
+    "rubrica": [
+      { "concepto": "la clave primaria identifica cada fila", "sinonimos": ["primary key", "pk", "identifica", "identificador", "única", "único", "unique", "no nula", "not null"] },
+      { "concepto": "la foránea referencia otra tabla", "sinonimos": ["foreign key", "fk", "referencia", "referencian", "otra tabla", "relación", "relaciona", "apunta"] },
+      { "concepto": "integridad referencial", "sinonimos": ["integridad referencial", "integridad", "huérfanos", "huérfanas", "cascade", "cascada", "on delete"] }
+    ],
+    "esperado": "La clave primaria identifica de forma única cada fila de una tabla (única y no nula). La clave foránea es una columna que referencia la clave primaria de otra tabla para relacionarlas, y la base de datos garantiza la integridad referencial: no puede apuntar a filas inexistentes (con ON DELETE CASCADE, RESTRICT...)."
+  },
+  {
+    "id": "bbdd-junior-002",
+    "stack": "bbdd",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre INNER JOIN y LEFT JOIN?",
+    "rubrica": [
+      { "concepto": "INNER: solo las coincidencias", "sinonimos": ["coincidencia", "coincidencias", "coinciden", "ambas tablas", "las dos tablas", "intersección", "solo las filas"] },
+      { "concepto": "LEFT: todas las filas de la izquierda", "sinonimos": ["izquierda", "tabla de la izquierda", "todas las filas", "left", "aunque no tengan"] },
+      { "concepto": "NULL donde no hay pareja", "sinonimos": ["null", "nulls", "nulos", "nulo", "vacíos", "vacío"] }
+    ],
+    "esperado": "INNER JOIN devuelve solo las filas que tienen coincidencia en ambas tablas según la condición. LEFT JOIN devuelve todas las filas de la tabla de la izquierda y, cuando no hay coincidencia en la derecha, rellena sus columnas con NULL."
+  },
+  {
+    "id": "bbdd-junior-003",
+    "stack": "bbdd",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre WHERE y HAVING en SQL?",
+    "rubrica": [
+      { "concepto": "WHERE filtra filas antes de agrupar", "sinonimos": ["filas", "antes", "antes de agrupar", "registros", "fila a fila"] },
+      { "concepto": "HAVING filtra grupos", "sinonimos": ["grupos", "grupo", "group by", "después", "después de agrupar", "agrupados", "agrupar"] },
+      { "concepto": "funciones de agregado", "sinonimos": ["count", "sum", "avg", "max", "min", "agregación", "agregado", "agregados", "funciones de agregado"] }
+    ],
+    "esperado": "WHERE filtra filas individuales antes de agrupar y no puede usar funciones de agregado. HAVING filtra los grupos resultantes de GROUP BY y sí puede usar agregados, por ejemplo HAVING COUNT(*) > 5."
+  },
+  {
+    "id": "bbdd-junior-004",
+    "stack": "bbdd",
+    "nivel": "junior",
+    "texto": "¿Qué es la normalización de una base de datos y para qué sirve?",
+    "rubrica": [
+      { "concepto": "eliminar redundancia", "sinonimos": ["redundancia", "redundante", "duplicación", "duplicados", "datos repetidos", "repetir datos"] },
+      { "concepto": "formas normales", "sinonimos": ["1fn", "2fn", "3fn", "1nf", "2nf", "3nf", "forma normal", "formas normales", "primera forma normal"] },
+      { "concepto": "evitar anomalías", "sinonimos": ["anomalía", "anomalías", "inconsistencia", "inconsistencias", "integridad", "actualizar en un solo sitio"] }
+    ],
+    "esperado": "Es organizar las tablas siguiendo las formas normales (1FN valores atómicos, 2FN y 3FN sin dependencias parciales ni transitivas) para que cada dato se guarde en un solo sitio. Evita redundancia y anomalías de inserción, actualización y borrado; a veces se desnormaliza a propósito por rendimiento."
+  },
+  {
+    "id": "bbdd-junior-005",
+    "stack": "bbdd",
+    "nivel": "junior",
+    "texto": "¿Qué significan las siglas ACID en una base de datos?",
+    "rubrica": [
+      { "concepto": "atomicidad", "sinonimos": ["atomicidad", "atomicity", "atómica", "todo o nada"] },
+      { "concepto": "consistencia", "sinonimos": ["consistencia", "consistency", "consistente", "restricciones", "reglas"] },
+      { "concepto": "aislamiento", "sinonimos": ["aislamiento", "isolation", "aisladas", "concurrentes"] },
+      { "concepto": "durabilidad", "sinonimos": ["durabilidad", "durability", "duradera", "persiste", "sobrevive", "no se pierde"] }
+    ],
+    "esperado": "Atomicidad: la transacción se aplica entera o nada. Consistencia: lleva la base de datos de un estado válido a otro, respetando restricciones. Aislamiento: las transacciones concurrentes no se pisan (según el nivel de aislamiento). Durabilidad: lo confirmado sobrevive a una caída."
+  },
+  {
+    "id": "bbdd-junior-006",
+    "stack": "bbdd",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre una base de datos relacional (SQL) y una NoSQL?",
+    "rubrica": [
+      { "concepto": "relacional: tablas con esquema", "sinonimos": ["esquema", "schema", "tablas", "relacional", "relaciones", "joins", "sql"] },
+      { "concepto": "modelos NoSQL", "sinonimos": ["documentos", "documental", "clave-valor", "clave valor", "grafos", "columnar", "mongodb", "redis", "cassandra", "flexible"] },
+      { "concepto": "escalado y consistencia", "sinonimos": ["escalar", "escalado", "horizontal", "consistencia", "acid", "eventual", "consistencia eventual", "transacciones"] }
+    ],
+    "esperado": "Las relacionales guardan datos en tablas con esquema fijo, relaciones mediante claves y JOIN, SQL y transacciones ACID. Las NoSQL usan otros modelos (documentos, clave-valor, columnares, grafos) con esquema flexible, y muchas priorizan el escalado horizontal relajando la consistencia. Se elige según el patrón de acceso."
+  },
+  {
+    "id": "bbdd-junior-007",
+    "stack": "bbdd",
+    "nivel": "junior",
+    "texto": "¿Qué representa NULL en SQL y por qué «columna = NULL» no devuelve filas?",
+    "rubrica": [
+      { "concepto": "ausencia de valor", "sinonimos": ["ausencia", "sin valor", "no hay valor", "desconocido", "falta", "vacío", "no existe"] },
+      { "concepto": "IS NULL", "sinonimos": ["is null", "is not null", "coalesce"] },
+      { "concepto": "lógica de tres valores", "sinonimos": ["unknown", "tres valores", "ni verdadero ni falso", "desconocido", "null = null"] }
+    ],
+    "esperado": "NULL significa valor ausente o desconocido, no cero ni cadena vacía. Cualquier comparación con NULL (incluso NULL = NULL) da UNKNOWN, no verdadero, por la lógica de tres valores, y WHERE solo devuelve filas con verdadero. Para comprobarlo se usa IS NULL o IS NOT NULL."
+  },
+  {
+    "id": "bbdd-junior-008",
+    "stack": "bbdd",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre DELETE, TRUNCATE y DROP?",
+    "rubrica": [
+      { "concepto": "DELETE borra filas con condición", "sinonimos": ["delete", "where", "condición", "fila a fila", "algunas filas", "triggers"] },
+      { "concepto": "TRUNCATE vacía la tabla", "sinonimos": ["truncate", "vacía", "vaciar", "todas las filas", "rápido", "reinicia", "contadores"] },
+      { "concepto": "DROP elimina la tabla", "sinonimos": ["drop", "estructura", "la tabla entera", "la tabla", "esquema", "definición", "elimina la tabla"] }
+    ],
+    "esperado": "DELETE borra filas (todas o las del WHERE) una a una, registrando cada borrado y disparando triggers. TRUNCATE vacía la tabla entera de golpe, mucho más rápido, sin WHERE ni triggers de fila; que reinicie autoincrementos o sea transaccional depende del motor (PostgreSQL es transaccional; MySQL reinicia el contador y hace commit implícito). DROP elimina la tabla completa, estructura incluida."
+  },
+  {
+    "id": "bbdd-mid-001",
+    "stack": "bbdd",
+    "nivel": "mid",
+    "texto": "¿Qué es un índice y cuándo no conviene crearlo?",
+    "rubrica": [
+      { "concepto": "acelera las lecturas", "sinonimos": ["búsqueda", "búsquedas", "lectura", "lecturas", "rápido", "más rápido", "acelera", "b-tree", "btree", "árbol b"] },
+      { "concepto": "penaliza las escrituras", "sinonimos": ["escritura", "escrituras", "insert", "update", "delete", "penaliza", "coste", "espacio"] },
+      { "concepto": "baja selectividad o tablas pequeñas", "sinonimos": ["selectividad", "cardinalidad", "pocos valores", "tabla pequeña", "tablas pequeñas", "booleano"] }
+    ],
+    "esperado": "Un índice (típicamente un B-tree) acelera búsquedas y ordenaciones a cambio de espacio y de encarecer cada INSERT, UPDATE y DELETE. No compensa en tablas pequeñas, en columnas de baja selectividad o en tablas con muchas más escrituras que lecturas."
+  },
+  {
+    "id": "bbdd-mid-002",
+    "stack": "bbdd",
+    "nivel": "mid",
+    "texto": "¿Qué problemas evita cada nivel de aislamiento de transacciones del estándar SQL?",
+    "rubrica": [
+      { "concepto": "lecturas sucias", "sinonimos": ["lectura sucia", "lecturas sucias", "dirty read", "dirty reads", "read uncommitted", "read committed", "sin confirmar"] },
+      { "concepto": "lecturas no repetibles", "sinonimos": ["no repetible", "no repetibles", "non-repeatable", "repeatable read"] },
+      { "concepto": "fantasmas", "sinonimos": ["fantasma", "fantasmas", "phantom", "phantoms", "serializable"] },
+      { "concepto": "compromiso con el rendimiento", "sinonimos": ["rendimiento", "bloqueo", "bloqueos", "concurrencia", "coste", "más estricto"] }
+    ],
+    "esperado": "READ UNCOMMITTED permite lecturas sucias; READ COMMITTED las evita pero permite lecturas no repetibles; REPEATABLE READ las evita pero, según el estándar, permite filas fantasma; SERIALIZABLE equivale a ejecutar en serie. Cuanto más estricto, menos concurrencia y más bloqueos o reintentos."
+  },
+  {
+    "id": "bbdd-mid-003",
+    "stack": "bbdd",
+    "nivel": "mid",
+    "texto": "En un índice compuesto, ¿por qué importa el orden de las columnas?",
+    "rubrica": [
+      { "concepto": "regla del prefijo izquierdo", "sinonimos": ["prefijo", "izquierda", "leftmost", "primera columna", "orden de las columnas", "de izquierda a derecha", "orden"] },
+      { "concepto": "igualdad antes que rango", "sinonimos": ["igualdad", "rango", "rangos", "selectividad", "selectiva", "between"] },
+      { "concepto": "índice cubriente", "sinonimos": ["cubriente", "covering", "covering index", "index only", "index-only", "sin ir a la tabla"] }
+    ],
+    "esperado": "Un índice (a, b, c) está ordenado primero por a, luego por b: sirve para filtrar por a, por a y b, o por a, b y c, pero no por b sola (prefijo izquierdo). Conviene poner primero las columnas filtradas por igualdad y después las de rango. Si incluye todas las columnas de la consulta, es cubriente y evita ir a la tabla."
+  },
+  {
+    "id": "bbdd-mid-004",
+    "stack": "bbdd",
+    "nivel": "mid",
+    "texto": "¿Para qué sirve EXPLAIN y qué buscas al leer un plan de ejecución?",
+    "rubrica": [
+      { "concepto": "plan del optimizador", "sinonimos": ["plan", "plan de ejecución", "query plan", "optimizador", "planificador", "planner"] },
+      { "concepto": "tipo de acceso", "sinonimos": ["seq scan", "full scan", "full table scan", "escaneo completo", "index scan", "índice", "índices", "table scan", "recorre la tabla"] },
+      { "concepto": "estimaciones y coste real", "sinonimos": ["coste", "cost", "filas estimadas", "estimación", "estimaciones", "analyze", "explain analyze", "estadísticas"] }
+    ],
+    "esperado": "EXPLAIN muestra el plan que el optimizador elige para una consulta: tipo de acceso (escaneo completo o por índice), orden y algoritmo de los JOIN, filas estimadas y coste. Busco escaneos completos en tablas grandes, ordenaciones caras y estimaciones muy distintas de las filas reales (con EXPLAIN ANALYZE), señal de estadísticas desactualizadas."
+  },
+  {
+    "id": "bbdd-mid-005",
+    "stack": "bbdd",
+    "nivel": "mid",
+    "texto": "¿Qué es un deadlock en una base de datos y cómo se previene?",
+    "rubrica": [
+      { "concepto": "espera circular entre transacciones", "sinonimos": ["circular", "mutuamente", "se esperan", "espera", "bloqueo mutuo", "ciclo", "interbloqueo"] },
+      { "concepto": "el motor aborta una víctima", "sinonimos": ["detecta", "aborta", "víctima", "rollback", "cancela", "mata una"] },
+      { "concepto": "prevención", "sinonimos": ["orden", "mismo orden", "transacciones cortas", "timeout", "reintentar", "reintento"] }
+    ],
+    "esperado": "Dos o más transacciones se bloquean mutuamente: cada una retiene un recurso que la otra necesita y esperan para siempre. El motor detecta el ciclo y aborta una (la víctima), que debe reintentarse. Se previene accediendo a las filas siempre en el mismo orden, con transacciones cortas e índices que reduzcan lo bloqueado."
+  },
+  {
+    "id": "bbdd-mid-006",
+    "stack": "bbdd",
+    "nivel": "mid",
+    "texto": "¿Qué diferencia hay entre una vista y una vista materializada?",
+    "rubrica": [
+      { "concepto": "la vista es una consulta guardada", "sinonimos": ["consulta guardada", "virtual", "se ejecuta", "cada vez", "alias", "no guarda datos"] },
+      { "concepto": "la materializada almacena el resultado", "sinonimos": ["almacena", "guarda", "guarda el resultado", "físicamente", "física", "disco", "precalculada", "precalculado", "como una tabla"] },
+      { "concepto": "refresco", "sinonimos": ["refresh", "refrescar", "refresco", "desactualizada", "actualizar", "obsoleta"] }
+    ],
+    "esperado": "Una vista es una consulta con nombre: no guarda datos y se ejecuta cada vez que se consulta, siempre al día. Una vista materializada guarda físicamente el resultado, así que se lee rápido (y se puede indexar), pero puede quedar desactualizada hasta que se refresca (REFRESH MATERIALIZED VIEW)."
+  },
+  {
+    "id": "bbdd-mid-007",
+    "stack": "bbdd",
+    "nivel": "mid",
+    "texto": "¿Qué diferencia hay entre bloqueo optimista y bloqueo pesimista?",
+    "rubrica": [
+      { "concepto": "pesimista: bloquear antes de modificar", "sinonimos": ["pesimista", "select for update", "for update", "bloquea", "bloquear", "lock"] },
+      { "concepto": "optimista: comprobar la versión al escribir", "sinonimos": ["optimista", "versión", "version", "versiones", "comprobar", "compara", "timestamp", "where version"] },
+      { "concepto": "conflicto y reintento", "sinonimos": ["conflicto", "conflictos", "reintentar", "reintento", "falla", "colisión", "colisiones", "0 filas"] }
+    ],
+    "esperado": "El pesimista bloquea la fila al leerla (SELECT ... FOR UPDATE) y los demás esperan: seguro pero reduce concurrencia. El optimista no bloquea: guarda una versión y al escribir hace UPDATE ... WHERE version = leída; si afecta a 0 filas, otro escribió antes y hay que reintentar. Conviene cuando los conflictos son raros."
+  },
+  {
+    "id": "bbdd-mid-008",
+    "stack": "bbdd",
+    "nivel": "mid",
+    "texto": "¿Cómo funciona una inyección SQL y cómo se previene?",
+    "rubrica": [
+      { "concepto": "concatenar la entrada del usuario", "sinonimos": ["concatenar", "concatenación", "concatena", "entrada del usuario", "input", "inyectar", "comillas"] },
+      { "concepto": "consultas parametrizadas", "sinonimos": ["parametrizada", "parametrizadas", "consultas parametrizadas", "prepared statement", "prepared statements", "sentencias preparadas", "placeholders", "bind", "parámetros"] },
+      { "concepto": "defensa en profundidad", "sinonimos": ["mínimo privilegio", "permisos", "orm", "validar", "validación", "lista blanca"] }
+    ],
+    "esperado": "Ocurre al construir la consulta concatenando texto del usuario, que puede cerrar la cadena e inyectar SQL propio (' OR 1=1 --). Se previene con consultas parametrizadas, donde los datos nunca se interpretan como código. Además: usuario de BD con mínimo privilegio y listas blancas para lo que no se puede parametrizar (nombres de columna)."
+  },
+  {
+    "id": "bbdd-senior-001",
+    "stack": "bbdd",
+    "nivel": "senior",
+    "texto": "¿Qué dice el teorema CAP y qué añade PACELC?",
+    "rubrica": [
+      { "concepto": "consistencia, disponibilidad y tolerancia a particiones", "sinonimos": ["consistencia", "disponibilidad", "partición", "particiones", "partition tolerance", "availability", "consistency"] },
+      { "concepto": "ante una partición, elegir C o A", "sinonimos": ["elegir", "sacrificar", "durante una partición", "cp", "ap", "dos de tres", "renunciar"] },
+      { "concepto": "latencia sin partición (PACELC)", "sinonimos": ["pacelc", "latencia", "sin partición", "else", "en funcionamiento normal"] }
+    ],
+    "esperado": "CAP: en un sistema distribuido, cuando hay una partición de red hay que elegir entre consistencia (rechazar o esperar) y disponibilidad (responder con datos posiblemente viejos); la tolerancia a particiones no es opcional. PACELC añade que, aun sin partición, hay que elegir entre latencia y consistencia."
+  },
+  {
+    "id": "bbdd-senior-002",
+    "stack": "bbdd",
+    "nivel": "senior",
+    "texto": "¿Qué diferencia hay entre replicación síncrona y asíncrona y qué implica leer de réplicas?",
+    "rubrica": [
+      { "concepto": "síncrona: espera confirmación", "sinonimos": ["síncrona", "síncrono", "espera", "confirmación", "ack", "confirme"] },
+      { "concepto": "asíncrona: retraso y posible pérdida", "sinonimos": ["asíncrona", "asíncrono", "lag", "retraso", "replication lag", "pérdida de datos", "perder datos"] },
+      { "concepto": "lecturas en réplicas", "sinonimos": ["read replica", "read replicas", "réplicas de lectura", "réplica", "read-your-writes", "lee tus escrituras", "datos viejos", "failover"] }
+    ],
+    "esperado": "En síncrona el primario confirma la escritura cuando la réplica la ha recibido: sin pérdida en failover pero con más latencia. En asíncrona confirma enseguida y la réplica va con retraso (lag): si el primario cae se pierden los últimos cambios. Leer de réplicas asíncronas puede dar datos viejos y romper el read-your-writes."
+  },
+  {
+    "id": "bbdd-senior-003",
+    "stack": "bbdd",
+    "nivel": "senior",
+    "texto": "¿Qué es el sharding y qué problemas trae elegir mal la clave de shard?",
+    "rubrica": [
+      { "concepto": "partición horizontal por clave", "sinonimos": ["partición horizontal", "shard", "shards", "clave de shard", "shard key", "partition key", "repartir filas", "varios servidores"] },
+      { "concepto": "hotspots", "sinonimos": ["hotspot", "hotspots", "puntos calientes", "desequilibrio", "desequilibrado", "distribución", "uniforme"] },
+      { "concepto": "consultas entre shards y rebalanceo", "sinonimos": ["cross-shard", "entre shards", "joins", "rebalanceo", "rebalancear", "resharding", "hash consistente", "consistent hashing"] }
+    ],
+    "esperado": "Sharding es repartir las filas de una tabla entre varios servidores según una clave. Una mala clave concentra la carga en un shard (hotspot, como usar la fecha) o obliga a consultas y transacciones entre shards, que son lentas y complejas. Además, cambiar el número de shards exige rebalancear datos; el hash consistente lo suaviza."
+  },
+  {
+    "id": "bbdd-senior-004",
+    "stack": "bbdd",
+    "nivel": "senior",
+    "texto": "¿Qué es MVCC y qué ventaja tiene frente a bloquear en cada lectura?",
+    "rubrica": [
+      { "concepto": "varias versiones de cada fila", "sinonimos": ["versión", "versiones", "multiversión", "multiversion", "snapshot", "instantánea", "foto"] },
+      { "concepto": "lectores y escritores no se bloquean", "sinonimos": ["no bloquean", "no se bloquean", "sin bloquear", "sin bloqueos", "lectores", "escritores"] },
+      { "concepto": "limpieza de versiones viejas", "sinonimos": ["vacuum", "limpieza", "versiones muertas", "tuplas muertas", "garbage", "purga", "purge", "bloat"] }
+    ],
+    "esperado": "Multi-Version Concurrency Control guarda varias versiones de cada fila: cada transacción lee una instantánea consistente según su inicio, así que lectores y escritores no se bloquean entre sí. El coste es acumular versiones viejas que hay que limpiar (VACUUM en PostgreSQL, purge en InnoDB)."
+  },
+  {
+    "id": "bbdd-senior-005",
+    "stack": "bbdd",
+    "nivel": "senior",
+    "texto": "¿Qué es el write-ahead log (WAL) y para qué sirve además de la recuperación?",
+    "rubrica": [
+      { "concepto": "registrar el cambio antes de aplicarlo", "sinonimos": ["antes", "primero en el log", "registro", "log", "secuencial", "write-ahead", "wal", "redo log"] },
+      { "concepto": "recuperación tras una caída", "sinonimos": ["recuperación", "recuperar", "crash", "caída", "durabilidad", "rehacer", "redo", "replay"] },
+      { "concepto": "replicación y PITR", "sinonimos": ["replicación", "réplica", "réplicas", "point in time", "point-in-time", "pitr", "archivado", "streaming", "cdc"] }
+    ],
+    "esperado": "Cada cambio se escribe primero, de forma secuencial y con fsync, en un log; las páginas de datos se actualizan después. Tras una caída se reproduce el log para recuperar lo confirmado (durabilidad sin escribir páginas aleatorias en cada commit). El mismo log alimenta la replicación, la recuperación a un instante (PITR) y el CDC."
+  },
+  {
+    "id": "bbdd-senior-006",
+    "stack": "bbdd",
+    "nivel": "senior",
+    "texto": "¿Qué es el particionado de tablas en un mismo servidor y cuándo compensa?",
+    "rubrica": [
+      { "concepto": "dividir una tabla en particiones", "sinonimos": ["particiones", "partición", "particionado", "particionar", "partition", "dividir la tabla"] },
+      { "concepto": "por rango, lista o hash", "sinonimos": ["rango", "range", "list", "lista", "hash", "fecha", "por mes"] },
+      { "concepto": "poda y mantenimiento", "sinonimos": ["pruning", "partition pruning", "poda", "descartar particiones", "borrar particiones", "drop partition", "mantenimiento", "archivar"] }
+    ],
+    "esperado": "Es dividir una tabla grande en particiones (por rango de fechas, por lista o por hash) que el motor gestiona como una sola. Compensa en tablas enormes cuyas consultas filtran por la clave: el optimizador descarta particiones (pruning) y los datos viejos se borran o archivan soltando la partición entera, sin DELETE masivo."
+  },
+  {
+    "id": "bbdd-senior-007",
+    "stack": "bbdd",
+    "nivel": "senior",
+    "texto": "En una base de datos replicada multi-líder, ¿cómo se resuelven los conflictos de escritura?",
+    "rubrica": [
+      { "concepto": "escrituras concurrentes en distintos nodos", "sinonimos": ["conflicto", "conflictos", "concurrentes", "concurrente", "multi-líder", "multi-master", "multimaster", "varios nodos"] },
+      { "concepto": "last write wins", "sinonimos": ["last write wins", "lww", "la última gana", "gana la última", "marca de tiempo", "timestamp", "perder escrituras"] },
+      { "concepto": "CRDT y relojes vectoriales", "sinonimos": ["crdt", "crdts", "relojes vectoriales", "reloj vectorial", "vector clock", "vector clocks", "versión vectorial", "merge", "fusionar"] },
+      { "concepto": "convergencia eventual", "sinonimos": ["converge", "convergen", "converger", "convergencia", "consistencia eventual", "eventualmente"] }
+    ],
+    "esperado": "Si dos líderes aceptan escrituras concurrentes sobre el mismo dato hay que converger. Opciones: last write wins por marca de tiempo (simple, pero pierde escrituras y depende de relojes), detectar concurrencia con relojes vectoriales y fusionar en la aplicación, o usar CRDT, estructuras que se fusionan de forma determinista."
+  },
+  {
+    "id": "bbdd-senior-008",
+    "stack": "bbdd",
+    "nivel": "senior",
+    "texto": "¿Cómo harías un cambio de esquema en una tabla muy grande sin parar el servicio?",
+    "rubrica": [
+      { "concepto": "expandir y contraer en fases", "sinonimos": ["expand", "contract", "expand and contract", "expandir", "contraer", "fases", "pasos", "paralelo"] },
+      { "concepto": "rellenar por lotes", "sinonimos": ["backfill", "lotes", "lote", "batches", "por partes", "rellenar", "migrar datos"] },
+      { "concepto": "evitar bloqueos largos", "sinonimos": ["bloqueo", "bloqueos", "lock", "locks", "online", "concurrently", "sin bloquear", "pt-online-schema-change", "gh-ost"] },
+      { "concepto": "código compatible con ambos esquemas", "sinonimos": ["doble escritura", "dual write", "en ambas", "escribir en las dos", "ambas versiones", "los dos esquemas", "retrocompatible", "compatibilidad", "compatible"] }
+    ],
+    "esperado": "Con expand and contract: añadir la columna o tabla nueva sin romper la vieja, desplegar código que escriba en ambas, rellenar los datos antiguos por lotes, pasar las lecturas a lo nuevo y, al final, quitar lo viejo. Cada paso evita bloqueos largos (índices CONCURRENTLY, herramientas online como gh-ost) y es reversible."
+  },
+  {
+    "id": "devops-junior-001",
+    "stack": "devops",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre un contenedor y una máquina virtual?",
+    "rubrica": [
+      { "concepto": "el contenedor comparte el kernel", "sinonimos": ["kernel", "núcleo", "kernel del host", "comparte el sistema operativo", "namespaces", "cgroups"] },
+      { "concepto": "la VM virtualiza hardware con un hipervisor", "sinonimos": ["hipervisor", "hypervisor", "sistema operativo completo", "so completo", "virtualiza hardware", "hardware virtual", "sistema operativo propio"] },
+      { "concepto": "ligereza y arranque", "sinonimos": ["ligero", "ligeros", "ligera", "rápido", "arranque", "arrancan", "segundos", "menos recursos", "aislamiento"] }
+    ],
+    "esperado": "Una máquina virtual emula hardware mediante un hipervisor y ejecuta su propio sistema operativo completo: aislamiento fuerte pero pesada. Un contenedor es un proceso aislado con namespaces y cgroups que comparte el kernel del host: arranca en segundos, ocupa poco y aísla menos."
+  },
+  {
+    "id": "devops-junior-002",
+    "stack": "devops",
+    "nivel": "junior",
+    "texto": "En Docker, ¿qué diferencia hay entre una imagen y un contenedor?",
+    "rubrica": [
+      { "concepto": "la imagen es una plantilla inmutable", "sinonimos": ["plantilla", "inmutable", "solo lectura", "read-only", "capa", "capas", "layers", "molde", "clase"] },
+      { "concepto": "el contenedor es una instancia en ejecución", "sinonimos": ["instancia", "ejecución", "en marcha", "proceso", "corriendo", "docker run", "capa de escritura"] },
+      { "concepto": "Dockerfile y registro", "sinonimos": ["dockerfile", "docker build", "build", "registro", "registry", "docker hub", "pull", "push"] }
+    ],
+    "esperado": "La imagen es una plantilla inmutable formada por capas de solo lectura, construida con un Dockerfile y guardada en un registro. El contenedor es una instancia en ejecución de esa imagen, con una capa de escritura propia que se pierde al borrarlo; de una imagen salen muchos contenedores."
+  },
+  {
+    "id": "devops-junior-003",
+    "stack": "devops",
+    "nivel": "junior",
+    "texto": "¿Qué significa CI/CD?",
+    "rubrica": [
+      { "concepto": "integración continua con tests automáticos", "sinonimos": ["integración continua", "continuous integration", "test", "tests", "pruebas", "automáticos", "automáticas", "build", "compilar"] },
+      { "concepto": "entrega o despliegue continuo", "sinonimos": ["entrega continua", "despliegue continuo", "continuous delivery", "continuous deployment", "desplegar", "deploy", "producción"] },
+      { "concepto": "pipeline en cada cambio", "sinonimos": ["pipeline", "pipelines", "github actions", "jenkins", "gitlab ci", "cada commit", "cada push", "cada cambio"] }
+    ],
+    "esperado": "CI (integración continua): cada cambio que se sube se integra con la rama principal y un pipeline lo compila y pasa los tests automáticamente. CD es entrega continua (siempre listo para desplegar, con aprobación manual) o despliegue continuo (cada cambio que pasa el pipeline llega solo a producción)."
+  },
+  {
+    "id": "devops-junior-004",
+    "stack": "devops",
+    "nivel": "junior",
+    "texto": "¿Qué es el DNS y qué diferencia hay entre un registro A y un CNAME?",
+    "rubrica": [
+      { "concepto": "traduce nombres a IP", "sinonimos": ["ip", "ips", "dirección ip", "traduce", "traducir", "nombre", "nombres", "dominio", "dominios"] },
+      { "concepto": "A apunta a una IP; CNAME, a otro nombre", "sinonimos": ["registro a", "cname", "alias", "otro nombre", "otro dominio", "ipv4", "aaaa"] },
+      { "concepto": "resolución con caché y TTL", "sinonimos": ["ttl", "caché", "cache", "resolver", "resolutor", "jerarquía", "servidores raíz", "recursivo", "propagación"] }
+    ],
+    "esperado": "El DNS traduce nombres de dominio a direcciones IP mediante una jerarquía de servidores, con respuestas cacheadas durante su TTL. Un registro A asocia un nombre a una IPv4 (AAAA, a una IPv6); un CNAME hace que un nombre sea alias de otro nombre, que a su vez se resuelve."
+  },
+  {
+    "id": "devops-junior-005",
+    "stack": "devops",
+    "nivel": "junior",
+    "texto": "¿Qué aporta HTTPS frente a HTTP?",
+    "rubrica": [
+      { "concepto": "cifrado", "sinonimos": ["cifrado", "cifra", "cifrar", "encriptado", "encripta", "nadie puede leer", "confidencialidad"] },
+      { "concepto": "autenticidad con certificado", "sinonimos": ["certificado", "certificados", "autoridad de certificación", "ca", "identidad", "autenticidad", "let's encrypt"] },
+      { "concepto": "integridad mediante TLS", "sinonimos": ["integridad", "manipulación", "manipular", "modificar", "tls", "ssl", "handshake"] }
+    ],
+    "esperado": "HTTPS es HTTP sobre TLS. Cifra el tráfico (nadie en medio puede leerlo), garantiza su integridad (no pueden modificarlo sin que se note) y autentica al servidor con un certificado firmado por una autoridad de certificación, así sabes que hablas con el dominio real."
+  },
+  {
+    "id": "devops-junior-006",
+    "stack": "devops",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre git merge y git rebase?",
+    "rubrica": [
+      { "concepto": "merge crea un commit de fusión", "sinonimos": ["commit de merge", "merge commit", "commit de fusión", "fusión", "fusiona", "conserva la historia", "historia real"] },
+      { "concepto": "rebase reescribe una historia lineal", "sinonimos": ["reescribe", "reescribir", "lineal", "reaplica", "reaplicar", "encima", "nuevos commits", "nuevos hashes"] },
+      { "concepto": "no rebasear ramas compartidas", "sinonimos": ["compartida", "compartidas", "publicada", "publicadas", "push --force", "force push", "forzar", "otros compañeros"] }
+    ],
+    "esperado": "merge une dos ramas creando un commit de fusión y conserva la historia tal como ocurrió. rebase reaplica tus commits encima de la otra rama, creando commits nuevos (otros hashes) y una historia lineal. No se debe hacer rebase de ramas ya compartidas, porque obliga a un push forzado y rompe el trabajo de los demás."
+  },
+  {
+    "id": "devops-junior-007",
+    "stack": "devops",
+    "nivel": "junior",
+    "texto": "¿Qué hace un balanceador de carga?",
+    "rubrica": [
+      { "concepto": "reparte el tráfico entre servidores", "sinonimos": ["reparte", "repartir", "distribuye", "distribuir", "tráfico", "peticiones", "servidores", "instancias"] },
+      { "concepto": "health checks", "sinonimos": ["health check", "health checks", "salud", "comprobaciones", "caído", "caídos", "sanos", "quita"] },
+      { "concepto": "algoritmos de reparto", "sinonimos": ["round robin", "round-robin", "menos conexiones", "least connections", "algoritmo", "hash", "pesos", "sticky"] }
+    ],
+    "esperado": "Recibe el tráfico y lo reparte entre varias instancias según un algoritmo (round robin, menos conexiones, hash de IP), comprueba su salud con health checks para sacar las caídas y así aporta escalabilidad y alta disponibilidad. Suele terminar TLS y puede trabajar en capa 4 (TCP) o 7 (HTTP)."
+  },
+  {
+    "id": "devops-junior-008",
+    "stack": "devops",
+    "nivel": "junior",
+    "texto": "¿Qué es la infraestructura como código y qué ventajas tiene?",
+    "rubrica": [
+      { "concepto": "infraestructura definida en ficheros versionados", "sinonimos": ["código", "ficheros", "versionado", "versionada", "git", "declarativo", "declarativa"] },
+      { "concepto": "reproducible y automatizable", "sinonimos": ["reproducible", "repetible", "idempotente", "mismo entorno", "automatizar", "automatizado", "sin clics", "revisable"] },
+      { "concepto": "herramientas", "sinonimos": ["terraform", "opentofu", "pulumi", "cloudformation", "ansible", "bicep"] }
+    ],
+    "esperado": "Es describir servidores, redes y servicios en ficheros de código (Terraform, Pulumi, CloudFormation) versionados en Git, en lugar de configurarlos a mano. Así los entornos son reproducibles, los cambios se revisan en pull requests, hay historial y se puede recrear todo de forma automática e idempotente."
+  },
+  {
+    "id": "devops-mid-001",
+    "stack": "devops",
+    "nivel": "mid",
+    "texto": "En Kubernetes, ¿qué son un Pod, un Deployment y un Service?",
+    "rubrica": [
+      { "concepto": "Pod: unidad mínima", "sinonimos": ["pod", "pods", "unidad mínima", "contenedor", "contenedores", "efímero"] },
+      { "concepto": "Deployment: réplicas y actualizaciones", "sinonimos": ["deployment", "réplicas", "replicas", "replicaset", "rolling update", "declarativo", "estado deseado"] },
+      { "concepto": "Service: punto de acceso estable", "sinonimos": ["service", "ip estable", "dns", "balancea", "descubrimiento", "selector", "labels", "etiquetas"] }
+    ],
+    "esperado": "Un Pod es la unidad mínima: uno o varios contenedores que comparten red y volúmenes, efímeros. Un Deployment declara cuántas réplicas de un Pod quieres y gestiona actualizaciones progresivas (rolling update) mediante ReplicaSets. Un Service da una IP y un nombre DNS estables que balancean entre los Pods que casan con su selector."
+  },
+  {
+    "id": "devops-mid-002",
+    "stack": "devops",
+    "nivel": "mid",
+    "texto": "¿Qué diferencia hay entre un despliegue blue-green y uno canary?",
+    "rubrica": [
+      { "concepto": "blue-green: dos entornos completos", "sinonimos": ["blue-green", "blue green", "azul", "verde", "dos entornos", "conmutar", "cambiar el tráfico de golpe"] },
+      { "concepto": "canary: una parte del tráfico", "sinonimos": ["canary", "canario", "porcentaje", "poco a poco", "gradual", "gradualmente", "subconjunto", "1%"] },
+      { "concepto": "vuelta atrás rápida", "sinonimos": ["rollback", "volver atrás", "revertir", "marcha atrás", "métricas"] }
+    ],
+    "esperado": "En blue-green hay dos entornos idénticos: la versión nueva se despliega en el inactivo y el tráfico se conmuta de golpe, con vuelta atrás inmediata. En canary la versión nueva recibe primero un pequeño porcentaje del tráfico y se va ampliando mientras las métricas sean buenas: menos riesgo, más lento."
+  },
+  {
+    "id": "devops-mid-003",
+    "stack": "devops",
+    "nivel": "mid",
+    "texto": "¿Cómo reduces el tamaño y el tiempo de construcción de una imagen Docker?",
+    "rubrica": [
+      { "concepto": "multi-stage build", "sinonimos": ["multi-stage", "multistage", "multietapa", "etapas", "varias etapas", "stages", "build stage"] },
+      { "concepto": "imagen base mínima", "sinonimos": ["alpine", "distroless", "slim", "base pequeña", "imagen base", "scratch"] },
+      { "concepto": "caché de capas y orden", "sinonimos": ["capa", "capas", "layers", "caché", "cache", "orden", "dependencias primero", "dockerignore", ".dockerignore"] }
+    ],
+    "esperado": "Con un build multi-stage: se compila en una etapa con todas las herramientas y solo se copia el artefacto final a una imagen base mínima (slim, alpine, distroless). Para que construya rápido se ordenan las instrucciones de menos a más cambiantes (copiar el manifiesto de dependencias e instalar antes del código) y se usa .dockerignore."
+  },
+  {
+    "id": "devops-mid-004",
+    "stack": "devops",
+    "nivel": "mid",
+    "texto": "¿Cómo gestionas los secretos en un pipeline de CI/CD?",
+    "rubrica": [
+      { "concepto": "nunca en el repositorio", "sinonimos": ["repositorio", "repo", "git", "no commitear", "texto plano", "código fuente", "logs"] },
+      { "concepto": "gestor de secretos", "sinonimos": ["vault", "secrets manager", "secret manager", "gestor de secretos", "secretos del ci", "github secrets", "kms", "cifrados"] },
+      { "concepto": "mínimo privilegio y credenciales temporales", "sinonimos": ["rotación", "rotar", "mínimo privilegio", "least privilege", "oidc", "credenciales temporales", "caducidad", "scope"] }
+    ],
+    "esperado": "Nunca en el repositorio ni en los logs: se guardan cifrados en el gestor del CI (GitHub Secrets) o en un gestor externo (Vault, AWS Secrets Manager) y se inyectan como variables solo en los jobs que los necesitan. Mejor aún, credenciales temporales vía OIDC en vez de claves fijas, con mínimo privilegio y rotación."
+  },
+  {
+    "id": "devops-mid-005",
+    "stack": "devops",
+    "nivel": "mid",
+    "texto": "En Kubernetes, ¿qué diferencia hay entre una liveness probe y una readiness probe?",
+    "rubrica": [
+      { "concepto": "liveness: reiniciar si está colgado", "sinonimos": ["liveness", "reinicia", "reiniciar", "reinicio", "colgado", "bloqueado", "vivo"] },
+      { "concepto": "readiness: recibir tráfico o no", "sinonimos": ["readiness", "tráfico", "listo", "preparado", "fuera del balanceo", "endpoints", "service"] },
+      { "concepto": "startup probe para arranques lentos", "sinonimos": ["startup", "startup probe", "startupprobe", "arranque lento", "arranque", "initialdelayseconds"] }
+    ],
+    "esperado": "Si falla la liveness probe, el kubelet reinicia el contenedor (para procesos colgados). Si falla la readiness, el Pod sigue vivo pero se saca de los endpoints del Service y no recibe tráfico (arrancando, dependencias caídas). La startup probe protege los arranques lentos retrasando las otras dos."
+  },
+  {
+    "id": "devops-mid-006",
+    "stack": "devops",
+    "nivel": "mid",
+    "texto": "¿Qué es el state de Terraform y por qué se guarda en un backend remoto?",
+    "rubrica": [
+      { "concepto": "mapa entre el código y los recursos reales", "sinonimos": ["state", "estado", "tfstate", "terraform.tfstate", "recursos reales", "mapeo", "ids"] },
+      { "concepto": "backend remoto con bloqueo", "sinonimos": ["remoto", "backend", "s3", "gcs", "bloqueo", "lock", "locking", "dynamodb", "equipo"] },
+      { "concepto": "plan y deriva", "sinonimos": ["drift", "deriva", "plan", "cambios manuales", "diferencias", "refresh"] }
+    ],
+    "esperado": "El state registra qué recursos reales corresponden a cada bloque del código, con sus ids y atributos; con él Terraform calcula el plan de cambios y detecta la deriva respecto a cambios manuales. Se guarda en un backend remoto (S3, GCS, Terraform Cloud) para compartirlo en el equipo, con bloqueo para evitar applies simultáneos, y cifrado porque puede contener secretos."
+  },
+  {
+    "id": "devops-mid-007",
+    "stack": "devops",
+    "nivel": "mid",
+    "texto": "¿Cuáles son las cuatro señales doradas (golden signals) de monitorización según SRE?",
+    "rubrica": [
+      { "concepto": "latencia", "sinonimos": ["latencia", "latency", "tiempo de respuesta", "p99", "p95", "percentil"] },
+      { "concepto": "tráfico", "sinonimos": ["tráfico", "traffic", "peticiones por segundo", "rps", "demanda", "throughput"] },
+      { "concepto": "errores", "sinonimos": ["errores", "error", "errors", "tasa de errores", "5xx", "fallos"] },
+      { "concepto": "saturación", "sinonimos": ["saturación", "saturation", "uso de cpu", "memoria", "capacidad", "colas", "lleno"] }
+    ],
+    "esperado": "Latencia (cuánto tardan las peticiones, separando las correctas de las fallidas y mirando percentiles), tráfico (demanda, por ejemplo peticiones por segundo), errores (tasa de peticiones fallidas) y saturación (lo lleno que está el recurso más limitado: CPU, memoria, colas)."
+  },
+  {
+    "id": "devops-mid-008",
+    "stack": "devops",
+    "nivel": "mid",
+    "texto": "¿Cómo funciona el autoescalado horizontal y qué riesgos tiene configurarlo mal?",
+    "rubrica": [
+      { "concepto": "métrica y umbral", "sinonimos": ["cpu", "métrica", "métricas", "umbral", "memoria", "peticiones por segundo", "longitud de la cola", "hpa"] },
+      { "concepto": "mínimo y máximo de réplicas", "sinonimos": ["mínimo", "máximo", "límites", "límite", "réplicas", "instancias", "coste"] },
+      { "concepto": "estabilización y arranque", "sinonimos": ["cooldown", "enfriamiento", "estabilización", "arranque", "flapping", "oscilación", "oscilaciones", "warm-up", "tarda en arrancar"] }
+    ],
+    "esperado": "Añade o quita instancias para mantener una métrica (CPU, peticiones por segundo, cola) cerca de un objetivo, entre un mínimo y un máximo. Mal configurado oscila (flapping) sin ventana de estabilización, reacciona tarde si las instancias tardan en arrancar, dispara el coste sin máximo o tumba la base de datos al multiplicar conexiones."
+  },
+  {
+    "id": "devops-senior-001",
+    "stack": "devops",
+    "nivel": "senior",
+    "texto": "¿Qué diferencia hay entre SLI, SLO y SLA, y qué es un error budget?",
+    "rubrica": [
+      { "concepto": "SLI: indicador medido", "sinonimos": ["sli", "indicador", "métrica", "se mide", "porcentaje de peticiones"] },
+      { "concepto": "SLO: objetivo interno", "sinonimos": ["slo", "objetivo", "99.9", "99,9", "nueves"] },
+      { "concepto": "SLA: contrato con consecuencias", "sinonimos": ["sla", "contrato", "penalización", "penalizaciones", "compensación", "acuerdo", "cliente"] },
+      { "concepto": "error budget", "sinonimos": ["error budget", "presupuesto de errores", "presupuesto de error", "margen de error", "congelar despliegues", "fallos permitidos"] }
+    ],
+    "esperado": "El SLI es la métrica medida (por ejemplo, % de peticiones correctas en menos de 300 ms). El SLO es el objetivo interno para ese SLI (99,9 % al mes). El SLA es el compromiso contractual con el cliente, con penalizaciones, y suele ser más laxo que el SLO. El error budget es lo que el SLO permite fallar (0,1 %): si se agota, se frenan los despliegues."
+  },
+  {
+    "id": "devops-senior-002",
+    "stack": "devops",
+    "nivel": "senior",
+    "texto": "¿En qué consiste el modelo de seguridad zero trust?",
+    "rubrica": [
+      { "concepto": "no confiar en la red interna", "sinonimos": ["red interna", "perímetro", "no confiar", "nunca confiar", "never trust", "dentro de la red", "vpn"] },
+      { "concepto": "verificar cada petición", "sinonimos": ["verificar", "verifica", "identidad", "autenticar", "cada petición", "always verify", "mtls", "dispositivo"] },
+      { "concepto": "mínimo privilegio y segmentación", "sinonimos": ["mínimo privilegio", "least privilege", "microsegmentación", "segmentación", "segmentar", "acceso mínimo"] }
+    ],
+    "esperado": "Zero trust abandona la idea de perímetro: estar dentro de la red no da confianza. Cada petición se autentica y autoriza según la identidad del usuario o servicio y el estado del dispositivo (mTLS entre servicios, SSO con MFA), con mínimo privilegio y microsegmentación para limitar el movimiento lateral."
+  },
+  {
+    "id": "devops-senior-003",
+    "stack": "devops",
+    "nivel": "senior",
+    "texto": "¿Qué es GitOps y en qué se diferencia de un pipeline que hace deploy directamente?",
+    "rubrica": [
+      { "concepto": "Git como fuente de verdad", "sinonimos": ["fuente de verdad", "fuente única de verdad", "source of truth", "git", "repositorio", "declarativo"] },
+      { "concepto": "agente que reconcilia (pull)", "sinonimos": ["reconciliación", "reconcilia", "reconciliar", "pull", "operador", "agente", "argo", "argocd", "argo cd", "flux"] },
+      { "concepto": "deriva, auditoría y rollback", "sinonimos": ["drift", "deriva", "auditoría", "revert", "historial", "rollback", "cambios manuales"] }
+    ],
+    "esperado": "En GitOps el estado deseado del sistema (manifiestos declarativos) vive en Git, y un agente dentro del clúster (Argo CD, Flux) lo compara continuamente con el real y lo reconcilia (modelo pull). El CI no necesita credenciales del clúster, la deriva manual se corrige sola, Git da auditoría y un rollback es un git revert."
+  },
+  {
+    "id": "devops-senior-004",
+    "stack": "devops",
+    "nivel": "senior",
+    "texto": "¿Qué caracteriza un buen post-mortem de un incidente?",
+    "rubrica": [
+      { "concepto": "sin culpables", "sinonimos": ["sin culpa", "sin culpables", "blameless", "no buscar culpables", "no señalar", "el sistema", "fallo del sistema"] },
+      { "concepto": "causas y factores contribuyentes", "sinonimos": ["causa raíz", "causas raíz", "root cause", "factores", "contribuyentes", "5 porqués", "cinco porqués", "por qué"] },
+      { "concepto": "cronología y acciones con responsable", "sinonimos": ["acciones", "action items", "mejoras", "seguimiento", "responsable", "responsables", "timeline", "cronología", "impacto"] }
+    ],
+    "esperado": "Es blameless: busca qué permitió el fallo en el sistema y los procesos, no a quién culpar, para que la gente cuente la verdad. Incluye impacto, cronología, detección, causas y factores contribuyentes (no una única causa raíz) y acciones concretas con responsable y fecha, a las que se hace seguimiento."
+  },
+  {
+    "id": "devops-senior-005",
+    "stack": "devops",
+    "nivel": "senior",
+    "texto": "¿Qué medidas protegen la cadena de suministro de software de tu proyecto?",
+    "rubrica": [
+      { "concepto": "inventario de dependencias (SBOM)", "sinonimos": ["sbom", "inventario", "lista de materiales", "dependencias", "software bill of materials"] },
+      { "concepto": "firma y procedencia de artefactos", "sinonimos": ["firma", "firmar", "firmados", "sigstore", "cosign", "provenance", "procedencia", "slsa", "attestation"] },
+      { "concepto": "versiones fijadas y escaneo", "sinonimos": ["lockfile", "fijar", "fijadas", "pin", "pinning", "escaneo", "escanear", "dependabot", "vulnerabilidades", "cve", "digest", "sha"] }
+    ],
+    "esperado": "Fijar versiones con lockfile y acciones o imágenes por digest, escanear dependencias en busca de CVE y actualizarlas (Dependabot, Renovate), generar un SBOM de cada artefacto, firmarlo y dejar constancia de su procedencia (Sigstore/cosign, SLSA), y endurecer el CI: permisos mínimos del token y builds reproducibles."
+  },
+  {
+    "id": "devops-senior-006",
+    "stack": "devops",
+    "nivel": "senior",
+    "texto": "¿Qué son el RTO y el RPO y cómo influyen en elegir activo-activo o activo-pasivo?",
+    "rubrica": [
+      { "concepto": "RTO: tiempo hasta recuperar el servicio", "sinonimos": ["rto", "recovery time objective", "tiempo de recuperación", "cuánto tardas", "tiempo caído", "downtime"] },
+      { "concepto": "RPO: datos que puedes perder", "sinonimos": ["rpo", "recovery point objective", "pérdida de datos", "perder datos", "cuántos datos", "último backup", "punto de recuperación"] },
+      { "concepto": "activo-activo frente a activo-pasivo", "sinonimos": ["activo-activo", "activo-pasivo", "active-active", "active-passive", "standby", "failover", "multi-región", "coste"] }
+    ],
+    "esperado": "El RTO es cuánto tiempo puede estar caído el servicio tras un desastre; el RPO, cuántos datos (medidos en tiempo) se pueden perder. Un RTO y RPO cercanos a cero exigen activo-activo con replicación continua entre regiones, caro y complejo; si se toleran minutos u horas basta activo-pasivo con failover o restaurar copias."
+  },
+  {
+    "id": "devops-senior-007",
+    "stack": "devops",
+    "nivel": "senior",
+    "texto": "¿Por qué añadir una etiqueta como user_id a una métrica de Prometheus puede tumbar tu monitorización?",
+    "rubrica": [
+      { "concepto": "alta cardinalidad", "sinonimos": ["cardinalidad", "cardinality", "alta cardinalidad", "combinaciones", "valores únicos", "millones"] },
+      { "concepto": "cada combinación es una serie temporal", "sinonimos": ["serie temporal", "series temporales", "serie", "series", "time series", "cada valor"] },
+      { "concepto": "coste y alternativas", "sinonimos": ["memoria", "coste", "almacenamiento", "logs", "trazas", "exemplars", "agregar", "se cae", "oom"] }
+    ],
+    "esperado": "Cada combinación distinta de valores de etiquetas crea una serie temporal propia. Una etiqueta de alta cardinalidad como user_id multiplica las series por el número de usuarios y dispara la memoria y el almacenamiento hasta tumbar Prometheus. Las métricas deben usar etiquetas acotadas; el detalle por usuario va en logs o trazas."
+  },
+  {
+    "id": "devops-senior-008",
+    "stack": "devops",
+    "nivel": "senior",
+    "texto": "¿Qué son los feature flags, qué permiten y qué riesgos introducen?",
+    "rubrica": [
+      { "concepto": "separar despliegue de lanzamiento", "sinonimos": ["desplegar", "despliegue", "lanzamiento", "release", "activar", "desactivar", "sin desplegar", "kill switch", "interruptor"] },
+      { "concepto": "activación gradual o por segmentos", "sinonimos": ["gradual", "gradualmente", "porcentaje", "usuarios", "segmentos", "experimento", "experimentos", "a/b", "beta"] },
+      { "concepto": "deuda y complejidad", "sinonimos": ["deuda", "deuda técnica", "limpiar", "borrar", "combinaciones", "complejidad", "flags viejos", "obsoletos", "testear"] }
+    ],
+    "esperado": "Son condiciones en el código que activan o desactivan funcionalidades en caliente. Separan desplegar de lanzar: se despliega apagado, se activa poco a poco o por segmentos (experimentos A/B) y se apaga al instante si falla (kill switch). Riesgos: deuda si no se borran, combinaciones difíciles de probar y dependencia del servicio de flags."
+  },
+  {
+    "id": "fundamentos-junior-001",
+    "stack": "fundamentos",
+    "nivel": "junior",
+    "texto": "¿Qué es la notación Big O y para qué sirve?",
+    "rubrica": [
+      { "concepto": "crecimiento con el tamaño de la entrada", "sinonimos": ["crece", "crecimiento", "tamaño de la entrada", "tamaño de entrada", "escala", "número de elementos"] },
+      { "concepto": "comportamiento asintótico en el peor caso", "sinonimos": ["peor caso", "asintótico", "asintótica", "cota superior", "límite superior", "orden de magnitud"] },
+      { "concepto": "ejemplos de complejidades", "sinonimos": ["o(1)", "o(n)", "o(log n)", "o(n²)", "o(n^2)", "constante", "lineal", "logarítmica", "cuadrática"] }
+    ],
+    "esperado": "Describe cómo crece el tiempo (o la memoria) de un algoritmo según el tamaño de la entrada n, ignorando constantes; normalmente se usa como cota del peor caso. Sirve para comparar algoritmos: O(1) constante, O(log n) búsqueda binaria, O(n) recorrer una lista, O(n²) dos bucles anidados."
+  },
+  {
+    "id": "fundamentos-junior-002",
+    "stack": "fundamentos",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre una pila y una cola?",
+    "rubrica": [
+      { "concepto": "pila: LIFO", "sinonimos": ["lifo", "último en entrar", "el último que entra", "pila", "stack", "push", "pop"] },
+      { "concepto": "cola: FIFO", "sinonimos": ["fifo", "primero en entrar", "el primero que entra", "cola", "queue", "enqueue", "dequeue"] }
+    ],
+    "esperado": "Una pila (stack) es LIFO: el último elemento en entrar es el primero en salir, como una pila de platos (push y pop). Una cola (queue) es FIFO: el primero en entrar es el primero en salir, como la cola del súper. Ejemplos: la pila de llamadas y la cola de tareas."
+  },
+  {
+    "id": "fundamentos-junior-003",
+    "stack": "fundamentos",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre un array y una lista enlazada?",
+    "rubrica": [
+      { "concepto": "array: memoria contigua y acceso por índice", "sinonimos": ["índice", "acceso directo", "acceso aleatorio", "o(1)", "contigua", "contiguo", "memoria contigua", "posición"] },
+      { "concepto": "lista enlazada: nodos con punteros", "sinonimos": ["puntero", "punteros", "nodo", "nodos", "enlace", "enlaces", "referencia", "referencias", "siguiente"] },
+      { "concepto": "coste de insertar y de buscar", "sinonimos": ["insertar", "inserción", "inserciones", "borrar", "recorrer", "secuencial", "o(n)", "desplazar"] }
+    ],
+    "esperado": "Un array guarda los elementos en memoria contigua: acceso por índice en O(1), pero insertar o borrar en medio obliga a desplazar elementos (O(n)). Una lista enlazada son nodos con punteros al siguiente: insertar o borrar conociendo el nodo es O(1), pero acceder al elemento i exige recorrerla (O(n))."
+  },
+  {
+    "id": "fundamentos-junior-004",
+    "stack": "fundamentos",
+    "nivel": "junior",
+    "texto": "¿Qué es la recursividad y qué necesita una función recursiva para no fallar?",
+    "rubrica": [
+      { "concepto": "la función se llama a sí misma", "sinonimos": ["se llama a sí misma", "a sí misma", "llamarse", "se invoca", "recursiva", "recursivo", "subproblema", "subproblemas"] },
+      { "concepto": "caso base", "sinonimos": ["caso base", "casos base", "condición de parada", "condición de salida", "base case", "parada", "parar"] },
+      { "concepto": "desbordamiento de pila", "sinonimos": ["stack overflow", "desbordamiento", "desbordamiento de pila", "pila de llamadas", "call stack", "infinita", "infinito"] }
+    ],
+    "esperado": "Una función recursiva resuelve un problema llamándose a sí misma sobre un subproblema más pequeño. Necesita un caso base que devuelva sin recursión y que cada llamada se acerque a él; si no, la recursión es infinita y desborda la pila de llamadas (stack overflow)."
+  },
+  {
+    "id": "fundamentos-junior-005",
+    "stack": "fundamentos",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre un lenguaje compilado y uno interpretado?",
+    "rubrica": [
+      { "concepto": "compilado a código máquina antes de ejecutar", "sinonimos": ["código máquina", "binario", "ejecutable", "antes de ejecutar", "compilador", "compila", "compilación"] },
+      { "concepto": "interpretado durante la ejecución", "sinonimos": ["intérprete", "interpreta", "en tiempo de ejecución", "línea a línea", "al vuelo", "runtime"] },
+      { "concepto": "híbridos con bytecode y JIT", "sinonimos": ["jit", "just in time", "bytecode", "máquina virtual", "jvm", "v8", "híbrido", "híbridos"] }
+    ],
+    "esperado": "Un compilado se traduce entero a código máquina antes de ejecutarse (C, Rust, Go): arranque y ejecución rápidos y errores detectados al compilar. Un interpretado lo ejecuta un intérprete durante la ejecución. Hoy casi todo es híbrido: Java o Python compilan a bytecode y V8 o la JVM usan JIT; la distinción es de la implementación, no del lenguaje."
+  },
+  {
+    "id": "fundamentos-junior-006",
+    "stack": "fundamentos",
+    "nivel": "junior",
+    "texto": "¿Qué diferencia hay entre tipado estático y tipado dinámico?",
+    "rubrica": [
+      { "concepto": "estático: tipos comprobados al compilar", "sinonimos": ["compilación", "compilar", "tiempo de compilación", "antes de ejecutar", "declarar", "typescript", "java", "compilador"] },
+      { "concepto": "dinámico: tipos comprobados en ejecución", "sinonimos": ["ejecución", "runtime", "tiempo de ejecución", "python", "javascript", "la variable puede cambiar"] },
+      { "concepto": "fuerte o débil es otro eje", "sinonimos": ["fuerte", "débil", "coerción", "conversión implícita", "conversiones implícitas"] }
+    ],
+    "esperado": "En el tipado estático los tipos se conocen y comprueban antes de ejecutar, al compilar (Java, TypeScript): errores tempranos y mejor autocompletado. En el dinámico los tipos van con los valores y se comprueban en ejecución (Python, JavaScript): más flexible. Fuerte o débil (conversiones implícitas) es otro eje distinto."
+  },
+  {
+    "id": "fundamentos-junior-007",
+    "stack": "fundamentos",
+    "nivel": "junior",
+    "texto": "¿Cómo funciona una tabla hash (diccionario o mapa)?",
+    "rubrica": [
+      { "concepto": "función hash que da la posición", "sinonimos": ["función hash", "hash", "hashing", "posición", "cubeta", "cubetas", "bucket", "buckets"] },
+      { "concepto": "acceso medio en O(1)", "sinonimos": ["o(1)", "constante", "tiempo constante", "rápido", "muy rápido"] },
+      { "concepto": "colisiones", "sinonimos": ["colisión", "colisiones", "encadenamiento", "chaining", "direccionamiento abierto", "open addressing", "rehash", "redimensionar"] }
+    ],
+    "esperado": "Aplica una función hash a la clave para calcular la posición (cubeta) donde guardar el valor, así que buscar, insertar y borrar cuestan O(1) de media. Dos claves pueden caer en la misma cubeta (colisión), que se resuelve con encadenamiento o direccionamiento abierto; al llenarse, se redimensiona."
+  },
+  {
+    "id": "fundamentos-junior-008",
+    "stack": "fundamentos",
+    "nivel": "junior",
+    "texto": "¿Qué es Git y qué es un commit?",
+    "rubrica": [
+      { "concepto": "control de versiones distribuido", "sinonimos": ["control de versiones", "version control", "distribuido", "historial", "versiones", "repositorio local"] },
+      { "concepto": "commit: instantánea del proyecto", "sinonimos": ["instantánea", "snapshot", "foto", "estado del proyecto", "cambios", "hash", "mensaje"] },
+      { "concepto": "ramas", "sinonimos": ["rama", "ramas", "branch", "branches", "merge", "fusionar"] }
+    ],
+    "esperado": "Git es un sistema de control de versiones distribuido: cada copia tiene el historial completo. Un commit es una instantánea del proyecto en un momento, identificada por un hash, con autor, mensaje y puntero a su commit padre. Las ramas son punteros móviles a commits que permiten trabajar en paralelo y fusionar después."
+  },
+  {
+    "id": "fundamentos-mid-001",
+    "stack": "fundamentos",
+    "nivel": "mid",
+    "texto": "¿Qué diferencia hay entre un proceso y un hilo?",
+    "rubrica": [
+      { "concepto": "el proceso tiene memoria propia aislada", "sinonimos": ["memoria propia", "espacio de memoria", "espacio de direcciones", "aislado", "aislados", "aislamiento", "independiente"] },
+      { "concepto": "los hilos comparten la memoria del proceso", "sinonimos": ["comparten", "compartida", "memoria compartida", "mismo proceso", "shared memory", "dentro de un proceso"] },
+      { "concepto": "coste y sincronización", "sinonimos": ["cambio de contexto", "context switch", "más barato", "sincronizar", "mutex", "locks", "más ligero", "más ligeros", "ligeros", "condición de carrera", "condiciones de carrera", "race condition", "sincronización"] }
+    ],
+    "esperado": "Un proceso es un programa en ejecución con su propio espacio de memoria, aislado de los demás. Un hilo es una línea de ejecución dentro de un proceso: los hilos del mismo proceso comparten su memoria, así que crearlos y cambiar entre ellos es más barato, pero exige sincronizar el acceso a datos compartidos."
+  },
+  {
+    "id": "fundamentos-mid-002",
+    "stack": "fundamentos",
+    "nivel": "mid",
+    "texto": "¿Qué es una condición de carrera y cómo se evita?",
+    "rubrica": [
+      { "concepto": "el resultado depende del orden de ejecución", "sinonimos": ["orden", "depende de", "intercalado", "intercalan", "intercalen", "entrelazado", "a la vez", "simultáneo", "simultáneos", "concurrente", "concurrentes", "timing"] },
+      { "concepto": "estado compartido mutable", "sinonimos": ["compartido", "compartida", "variable compartida", "recurso compartido", "estado compartido", "leer y escribir"] },
+      { "concepto": "sincronización", "sinonimos": ["mutex", "lock", "locks", "cerrojo", "atómico", "atómica", "atómicas", "semáforo", "sincronizar", "sección crítica", "inmutable"] }
+    ],
+    "esperado": "Ocurre cuando varios hilos o procesos acceden a un estado compartido y al menos uno escribe, de modo que el resultado depende de cómo se intercalen (dos hilos haciendo contador++ pierden incrementos). Se evita protegiendo la sección crítica con mutex o locks, usando operaciones atómicas o evitando compartir estado mutable."
+  },
+  {
+    "id": "fundamentos-mid-003",
+    "stack": "fundamentos",
+    "nivel": "mid",
+    "texto": "¿Qué dice el principio de inversión de dependencias (la D de SOLID)?",
+    "rubrica": [
+      { "concepto": "depender de abstracciones", "sinonimos": ["abstracción", "abstracciones", "interfaz", "interfaces", "contrato", "abstracto"] },
+      { "concepto": "alto nivel no depende de bajo nivel", "sinonimos": ["alto nivel", "bajo nivel", "detalles", "implementación concreta", "implementaciones concretas", "concreto"] },
+      { "concepto": "inyección de dependencias y tests", "sinonimos": ["inyección de dependencias", "dependency injection", "inyectar", "mock", "mocks", "test", "tests", "sustituir", "intercambiar"] }
+    ],
+    "esperado": "Los módulos de alto nivel (la lógica de negocio) no deben depender de los de bajo nivel (base de datos, HTTP); ambos dependen de abstracciones, y los detalles implementan esas interfaces. Se aplica normalmente con inyección de dependencias y permite cambiar implementaciones o usar dobles en los tests."
+  },
+  {
+    "id": "fundamentos-mid-004",
+    "stack": "fundamentos",
+    "nivel": "mid",
+    "texto": "¿Por qué se suele recomendar la composición frente a la herencia?",
+    "rubrica": [
+      { "concepto": "herencia: relación es-un", "sinonimos": ["es un", "es-un", "is-a", "herencia", "heredar", "hereda", "subclase", "clase padre"] },
+      { "concepto": "composición: relación tiene-un", "sinonimos": ["tiene un", "tiene-un", "has-a", "composición", "componer", "delegar", "delegación"] },
+      { "concepto": "acoplamiento y flexibilidad", "sinonimos": ["acoplamiento", "acoplado", "frágil", "flexibilidad", "flexible", "jerarquía", "jerarquías", "clase base frágil", "en tiempo de ejecución"] }
+    ],
+    "esperado": "La herencia (es-un) acopla la subclase a los detalles de la clase padre: cambios en la base rompen a las hijas (clase base frágil) y las jerarquías se vuelven rígidas. La composición (tiene-un) construye comportamiento combinando objetos y delegando en ellos, con menos acoplamiento y la posibilidad de cambiar piezas en ejecución."
+  },
+  {
+    "id": "fundamentos-mid-005",
+    "stack": "fundamentos",
+    "nivel": "mid",
+    "texto": "¿Qué diferencia hay entre concurrencia y paralelismo?",
+    "rubrica": [
+      { "concepto": "concurrencia: gestionar varias tareas intercaladas", "sinonimos": ["intercalar", "intercaladas", "intercalando", "solapan", "solapándose", "avanzan", "avancen", "por turnos", "alternar", "alterna", "gestionar varias", "progresan", "entrelazado", "estructura"] },
+      { "concepto": "paralelismo: ejecución simultánea", "sinonimos": ["simultáneo", "simultánea", "a la vez", "al mismo tiempo", "núcleos", "cores", "varios procesadores", "cpu"] },
+      { "concepto": "concurrencia sin paralelismo", "sinonimos": ["un solo núcleo", "un núcleo", "async", "event loop", "un hilo", "i/o"] }
+    ],
+    "esperado": "Concurrencia es estructurar el programa para que varias tareas avancen solapándose en el tiempo, aunque sea intercalándolas en un solo núcleo (como el event loop con I/O). Paralelismo es ejecutar varias cosas literalmente al mismo tiempo en varios núcleos. Puede haber concurrencia sin paralelismo."
+  },
+  {
+    "id": "fundamentos-mid-006",
+    "stack": "fundamentos",
+    "nivel": "mid",
+    "texto": "¿Qué diferencia hay entre tests unitarios, de integración y end-to-end, y qué propone la pirámide de tests?",
+    "rubrica": [
+      { "concepto": "unitarios: una pieza aislada", "sinonimos": ["unitario", "unitarios", "unitarias", "unit", "aislada", "aislado", "una función", "una clase"] },
+      { "concepto": "integración: varias piezas juntas", "sinonimos": ["integración", "integration", "varios componentes", "base de datos real", "juntos", "juntas"] },
+      { "concepto": "end-to-end y pirámide", "sinonimos": ["e2e", "end to end", "end-to-end", "extremo a extremo", "pirámide", "usuario", "navegador", "lentos", "frágiles"] }
+    ],
+    "esperado": "Los unitarios prueban una pieza aislada: rápidos y precisos. Los de integración prueban varias piezas juntas (código con base de datos real o con otro servicio). Los end-to-end recorren el sistema como un usuario: más realistas pero lentos y frágiles. La pirámide propone muchos unitarios, menos de integración y pocos e2e."
+  },
+  {
+    "id": "fundamentos-mid-007",
+    "stack": "fundamentos",
+    "nivel": "mid",
+    "texto": "¿Qué ventajas e inconvenientes tiene trabajar con datos inmutables?",
+    "rubrica": [
+      { "concepto": "no se modifican tras crearse", "sinonimos": ["no se modifica", "no se modifican", "no cambia", "no cambian", "nueva copia", "copia", "copias", "inmutable"] },
+      { "concepto": "sin efectos secundarios, más predecible", "sinonimos": ["efectos secundarios", "efectos colaterales", "predecible", "razonar", "depurar", "comparar referencias"] },
+      { "concepto": "seguro en concurrencia", "sinonimos": ["concurrencia", "hilos", "thread-safe", "sin bloqueos", "sin locks", "compartir"] },
+      { "concepto": "coste de copiar", "sinonimos": ["memoria", "coste", "rendimiento", "copiar", "estructuras persistentes", "garbage collector"] }
+    ],
+    "esperado": "Un dato inmutable no cambia tras crearse: modificarlo produce una copia nueva. Ventajas: sin efectos secundarios ocultos, código más predecible, detección de cambios por referencia y se comparte entre hilos sin locks. Inconvenientes: copias con coste de memoria y CPU, mitigado con estructuras persistentes que comparten partes."
+  },
+  {
+    "id": "fundamentos-mid-008",
+    "stack": "fundamentos",
+    "nivel": "mid",
+    "texto": "¿Cómo funciona la búsqueda binaria y qué requisito tiene?",
+    "rubrica": [
+      { "concepto": "requiere datos ordenados", "sinonimos": ["ordenado", "ordenada", "ordenados", "ordenadas", "sorted", "orden"] },
+      { "concepto": "divide el intervalo a la mitad", "sinonimos": ["mitad", "mitades", "divide", "dividir", "partir", "medio", "elemento central", "descarta"] },
+      { "concepto": "coste logarítmico", "sinonimos": ["log n", "o(log n)", "logarítmica", "logarítmico", "logaritmo"] }
+    ],
+    "esperado": "Sobre una colección ordenada, compara con el elemento central: si es el buscado termina; si es mayor sigue en la mitad izquierda y si es menor en la derecha, descartando la mitad en cada paso. Coste O(log n). Sin datos ordenados (y acceso por índice) no funciona."
+  },
+  {
+    "id": "fundamentos-senior-001",
+    "stack": "fundamentos",
+    "nivel": "senior",
+    "texto": "¿Qué es el hashing consistente y qué problema resuelve frente a hash(clave) mod N?",
+    "rubrica": [
+      { "concepto": "anillo de hashes", "sinonimos": ["anillo", "ring", "círculo", "sentido horario", "siguiente nodo"] },
+      { "concepto": "al cambiar los nodos se mueven pocas claves", "sinonimos": ["pocas claves", "mover pocas", "k/n", "redistribuir", "redistribución", "añadir nodos", "quitar nodos", "reasignar", "mod n"] },
+      { "concepto": "nodos virtuales", "sinonimos": ["nodos virtuales", "nodo virtual", "virtual nodes", "vnodes", "equilibrar", "reparto uniforme"] }
+    ],
+    "esperado": "Con hash(clave) mod N, añadir o quitar un nodo cambia N y reasigna casi todas las claves. En el hashing consistente nodos y claves se colocan en un anillo y cada clave va al siguiente nodo en sentido horario: un cambio solo mueve las claves de un tramo (unas K/N de media). Los nodos virtuales equilibran el reparto."
+  },
+  {
+    "id": "fundamentos-senior-002",
+    "stack": "fundamentos",
+    "nivel": "senior",
+    "texto": "En sistemas distribuidos, ¿por qué no basta el reloj de cada máquina para ordenar eventos y qué son los relojes de Lamport?",
+    "rubrica": [
+      { "concepto": "no hay reloj global fiable", "sinonimos": ["reloj global", "deriva", "desincronizados", "desincronización", "ntp", "clock skew", "relojes físicos"] },
+      { "concepto": "relojes lógicos de Lamport", "sinonimos": ["lamport", "reloj lógico", "relojes lógicos", "contador", "contadores", "incrementa"] },
+      { "concepto": "orden causal (happened-before)", "sinonimos": ["happened-before", "happens-before", "causalidad", "causal", "antes que", "relojes vectoriales", "vector clocks"] }
+    ],
+    "esperado": "Los relojes físicos derivan y NTP solo los sincroniza aproximadamente, así que sus marcas no ordenan con fiabilidad eventos de máquinas distintas. Lamport propone un contador lógico que cada proceso incrementa y propaga en los mensajes (tomando el máximo + 1), coherente con la relación causal happened-before; para detectar concurrencia hacen falta relojes vectoriales."
+  },
+  {
+    "id": "fundamentos-senior-003",
+    "stack": "fundamentos",
+    "nivel": "senior",
+    "texto": "¿Qué problema resuelven los algoritmos de consenso como Raft y cómo funciona Raft a grandes rasgos?",
+    "rubrica": [
+      { "concepto": "acuerdo entre nodos pese a fallos", "sinonimos": ["acuerdo", "consenso", "nodos", "fallos", "tolerancia a fallos", "se caen", "mismo valor"] },
+      { "concepto": "líder y log replicado", "sinonimos": ["líder", "leader", "log replicado", "log", "elección", "elecciones", "término", "términos", "term", "seguidores", "followers"] },
+      { "concepto": "mayoría (quórum)", "sinonimos": ["mayoría", "quórum", "quorum", "2f+1", "la mitad más uno", "mayoritario"] }
+    ],
+    "esperado": "Hacen que varios nodos acuerden una misma secuencia de operaciones aunque algunos fallen. En Raft se elige un líder por votación (con términos numerados); el líder recibe las escrituras, las replica en el log de los seguidores y las confirma cuando una mayoría las tiene. Con 2f+1 nodos tolera f caídos."
+  },
+  {
+    "id": "fundamentos-senior-004",
+    "stack": "fundamentos",
+    "nivel": "senior",
+    "texto": "¿Qué dice la ley de Amdahl y qué implica al paralelizar un programa?",
+    "rubrica": [
+      { "concepto": "la parte secuencial limita la mejora", "sinonimos": ["secuencial", "secuenciales", "no paralelizable", "parte serie", "serie", "fracción", "porcentaje"] },
+      { "concepto": "aceleración máxima acotada", "sinonimos": ["aceleración", "speedup", "máximo", "límite", "techo", "acotada", "como mucho"] },
+      { "concepto": "rendimientos decrecientes", "sinonimos": ["decrecientes", "no escala", "más núcleos", "más procesadores", "cuello de botella", "no compensa"] }
+    ],
+    "esperado": "La aceleración máxima al paralelizar está limitada por la fracción que sigue siendo secuencial: speedup = 1 / ((1 − p) + p/n). Si el 10 % es secuencial, nunca irá más de 10 veces más rápido aunque haya infinitos núcleos. Añadir núcleos da rendimientos decrecientes: conviene reducir la parte secuencial."
+  },
+  {
+    "id": "fundamentos-senior-005",
+    "stack": "fundamentos",
+    "nivel": "senior",
+    "texto": "¿Qué es un filtro de Bloom y qué tipo de error puede cometer?",
+    "rubrica": [
+      { "concepto": "estructura probabilística de pertenencia", "sinonimos": ["probabilística", "probabilístico", "pertenencia", "está en el conjunto", "membership", "conjunto", "compacta"] },
+      { "concepto": "falsos positivos pero no falsos negativos", "sinonimos": ["falso positivo", "falsos positivos", "false positive", "false positives", "sin falsos negativos", "nunca falsos negativos", "no hay falsos negativos"] },
+      { "concepto": "array de bits y varias funciones hash", "sinonimos": ["bit", "bits", "array de bits", "bitmap", "funciones hash", "varias funciones hash", "k funciones"] }
+    ],
+    "esperado": "Es una estructura probabilística muy compacta que responde si un elemento pertenece a un conjunto: un array de bits donde cada elemento enciende k posiciones calculadas con k funciones hash. Si algún bit está apagado, seguro que no está (sin falsos negativos); si todos están encendidos, probablemente está (falsos positivos). El filtro básico no permite borrar."
+  },
+  {
+    "id": "fundamentos-senior-006",
+    "stack": "fundamentos",
+    "nivel": "senior",
+    "texto": "¿En qué consiste la arquitectura hexagonal (puertos y adaptadores)?",
+    "rubrica": [
+      { "concepto": "dominio en el centro, independiente", "sinonimos": ["dominio", "núcleo", "lógica de negocio", "independiente", "centro", "no depende"] },
+      { "concepto": "puertos como interfaces", "sinonimos": ["puerto", "puertos", "ports", "interfaz", "interfaces", "contrato", "contratos"] },
+      { "concepto": "adaptadores intercambiables", "sinonimos": ["adaptador", "adaptadores", "adapters", "infraestructura", "base de datos", "intercambiar", "sustituir", "http"] }
+    ],
+    "esperado": "Sitúa la lógica de dominio en el centro, sin depender de frameworks ni infraestructura. El dominio define puertos (interfaces) para lo que necesita y para cómo se le invoca; los adaptadores (HTTP, base de datos, colas) implementan esos puertos desde fuera. Así se cambia la infraestructura o se prueba con dobles sin tocar el dominio."
+  },
+  {
+    "id": "fundamentos-senior-007",
+    "stack": "fundamentos",
+    "nivel": "senior",
+    "texto": "Si la red no es fiable, ¿qué debe tener en cuenta el diseño de cualquier llamada remota?",
+    "rubrica": [
+      { "concepto": "timeouts", "sinonimos": ["timeout", "timeouts", "tiempo de espera", "tiempo máximo", "deadline"] },
+      { "concepto": "reintentos con backoff", "sinonimos": ["reintento", "reintentos", "reintentar", "retry", "retries", "backoff", "exponencial", "jitter"] },
+      { "concepto": "idempotencia", "sinonimos": ["idempotente", "idempotentes", "idempotencia", "duplicado", "duplicados", "idempotency key"] },
+      { "concepto": "fallo parcial", "sinonimos": ["no sabes si llegó", "fallo parcial", "falacias", "falacias de la computación distribuida", "particiones", "latencia"] }
+    ],
+    "esperado": "Una llamada puede tardar, perderse o ejecutarse sin que llegue la respuesta, así que no sabes si tuvo efecto. Hace falta un timeout siempre, reintentos acotados con backoff exponencial y jitter, operaciones idempotentes para que reintentar sea seguro, y tratar el fallo parcial (circuit breaker, degradación) en vez de suponer la red fiable."
+  },
+  {
+    "id": "fundamentos-senior-008",
+    "stack": "fundamentos",
+    "nivel": "senior",
+    "texto": "¿Qué es el coste amortizado? Explícalo con un array dinámico que duplica su capacidad al llenarse.",
+    "rubrica": [
+      { "concepto": "coste medio sobre una secuencia de operaciones", "sinonimos": ["media", "promedio", "secuencia", "a lo largo", "total", "amortizado", "amortizada", "repartido"] },
+      { "concepto": "redimensionar duplicando", "sinonimos": ["duplicar", "duplica", "doble", "redimensionar", "redimensiona", "copiar", "copia", "realloc"] },
+      { "concepto": "O(1) amortizado frente a O(n) puntual", "sinonimos": ["o(1)", "o(n)", "peor caso", "ocasional", "ocasionalmente", "constante"] }
+    ],
+    "esperado": "Es el coste medio por operación a lo largo de una secuencia, aunque alguna operación suelta sea cara. En un array dinámico casi todos los push son O(1); al llenarse se reserva el doble y se copia todo (O(n)), pero como cada copia duplica la capacidad, el total de n inserciones es O(n): O(1) amortizado por inserción."
+  }
+]
