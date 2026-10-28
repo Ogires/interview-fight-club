@@ -3,3 +3,6 @@ node_modules/
 .dev.vars
 docs/guia-implementacion-detallada.*
 data/propuestas*.json
+
+# Plan de implementación: notas de trabajo para el agente, no se publica
+docs/plans/*-mv1.md
